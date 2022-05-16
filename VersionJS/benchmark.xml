@@ -224,6 +224,14 @@
 			scale_y="5"
 			unit_x="a"
 			unit_y="b">Landmark</object_landmark>
+			
+		<object_image
+			x="150"
+			y="300"
+			image="img/yellow_blue_linear_gradient.png"
+			width="50"
+			height="50"
+			visible="true">Image</object_image>
 
 	</objects>
 
