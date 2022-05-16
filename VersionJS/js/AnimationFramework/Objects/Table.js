@@ -219,7 +219,7 @@ export class Table extends AnimatedObject {
         if (this._has_header_rows) {
             drawing.push();
             drawing.fill(this._header_background_color[0], this._header_background_color[1], this._header_background_color[2], this._opacity * 255);
-            drawing.rect(this._x, this._y, this._header_column_height, total_height);
+            drawing.rect(this._x, this._y, this._header_row_width, total_height);
             drawing.pop();
         }
 
@@ -554,6 +554,7 @@ export class Table extends AnimatedObject {
 
     set has_header_columns (value) {
         this._has_header_columns = value;
+        this.fillCoordCells();
     }
 
     get has_header_rows () {
@@ -562,6 +563,7 @@ export class Table extends AnimatedObject {
 
     set has_header_rows (value) {
         this._has_header_rows = value;
+        this.fillCoordCells();
     }
 
     get header_background_color () {
@@ -587,11 +589,12 @@ export class Table extends AnimatedObject {
         this._header_font = value;
     }
 
-    get _header_column_height () {
+    get header_column_height () {
         return this._header_column_height;
     }
-    set _header_column_height (value) {
+    set header_column_height (value) {
         this._header_column_height = value;
+        this.fillCoordCells();
     }
 
     get header_row_width () {
@@ -599,5 +602,6 @@ export class Table extends AnimatedObject {
     }
     set header_row_width (value) {
         this._header_row_width = value;
+        this.fillCoordCells();
     }
 }
