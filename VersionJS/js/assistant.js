@@ -363,7 +363,7 @@ function new_object (object_type) {
 	property.appendChild(input);
 	article1.appendChild(property);
 
-	// angle
+	/*// angle
 	property = document.createElement("property");
 	property.className = "angle";
 	label = document.createElement("label");
@@ -374,7 +374,7 @@ function new_object (object_type) {
 	input.placeholder = angle;
 	input.onchange = function () { change_property(obj_id, this); };
 	property.appendChild(input);
-	article1.appendChild(property);
+	article1.appendChild(property);*/
 	section.appendChild(article1);
 
 	// Instructions
@@ -486,7 +486,7 @@ function new_object (object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// halignment
-			let halignment = "left";
+			let halignment = "center";
 			property = document.createElement("property");
 			property.className = "halignment";
 			label = document.createElement("label");
@@ -497,11 +497,11 @@ function new_object (object_type) {
 			option = document.createElement("option");
 			option.value = "left";
 			option.innerHTML = "Left";
-			option.selected = "selected";
 			input.appendChild(option);
 			option = document.createElement("option");
 			option.value = "center";
 			option.innerHTML = "Center";
+			option.selected = "selected";
 			input.appendChild(option);
 			option = document.createElement("option");
 			option.value = "right";
@@ -510,7 +510,7 @@ function new_object (object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// valignment
-			let valignment = "top";
+			let valignment = "center";
 			property = document.createElement("property");
 			property.className = "valignment";
 			label = document.createElement("label");
@@ -521,7 +521,6 @@ function new_object (object_type) {
 			option = document.createElement("option");
 			option.value = "top";
 			option.innerHTML = "Top";
-			option.selected = "selected";
 			input.appendChild(option);
 			option = document.createElement("option");
 			option.value = "bottom";
@@ -530,6 +529,7 @@ function new_object (object_type) {
 			option = document.createElement("option");
 			option.value = "center";
 			option.innerHTML = "Center";
+			option.selected = "selected";
 			input.appendChild(option);
 			option = document.createElement("option");
 			option.value = "baseline";
@@ -644,7 +644,7 @@ function new_object (object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// coord_y
-			let coord_y = [0, 60, 0, 60];
+			let coord_y = [0, 0, 60, 60];
 			property = document.createElement("property");
 			property.className = "coord_y";
 			label = document.createElement("label");
@@ -711,10 +711,11 @@ function new_object (object_type) {
 			// We set x-y at 60-60 at default to see it well in preview
 			let number_property = document.getElementsByClassName("x").length - 1;
 			let obj = document.getElementsByClassName("x")[number_property].childNodes[1];
-			obj.placeholder = "60";
+			obj.placeholder = "30";
 			obj = document.getElementsByClassName("y")[number_property].childNodes[1];
-			obj.placeholder = "60";
+			obj.placeholder = "110";
 			// width
+			width = 100;
 			property = document.createElement("property");
 			property.className = "width";
 			label = document.createElement("label");
@@ -728,6 +729,7 @@ function new_object (object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// height
+			height = 100;
 			property = document.createElement("property");
 			property.className = "height";
 			label = document.createElement("label");
@@ -793,7 +795,7 @@ function new_object (object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// max_x
-			let max_x = width;
+			let max_x = 50;
 			property = document.createElement("property");
 			property.className = "max_x";
 			label = document.createElement("label");
@@ -806,7 +808,7 @@ function new_object (object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// max_y
-			let max_y = height;
+			let max_y = 50;
 			property = document.createElement("property");
 			property.className = "max_y";
 			label = document.createElement("label");
@@ -818,7 +820,33 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Landmark(obj_id, 60, 60, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, scale_x, scale_y, unit_x, unit_y, max_x, max_y);
+			// min_x
+			let min_x = 0;
+			property = document.createElement("property");
+			property.className = "min_x";
+			label = document.createElement("label");
+			label.innerHTML = "min_x";
+			property.appendChild(label);
+			input = document.createElement("input");
+			input.type = "text";
+			input.value = min_x;
+			input.onchange = function () { change_property(obj_id, this); };
+			property.appendChild(input);
+			article1.appendChild(property);
+			// min_y
+			let min_y = 0;
+			property = document.createElement("property");
+			property.className = "min_y";
+			label = document.createElement("label");
+			label.innerHTML = "min_y";
+			property.appendChild(label);
+			input = document.createElement("input");
+			input.type = "text";
+			input.value = min_y;
+			input.onchange = function () { change_property(obj_id, this); };
+			property.appendChild(input);
+			article1.appendChild(property);
+			object = new Landmark(obj_id, 30, 110, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y);
 			break;
 		case "Grid":
 			// lines
@@ -1611,12 +1639,6 @@ function draw_animation () {
 
 			// Load the backround
 			draw_ref.load_background();
-
-			// Load animation's images
-			for (let id of objects_image_id) {
-				let object = objects_array[id];
-				object.loadImage(draw_ref);
-			}
 		};
 
 		/** Setup of the canvas */
@@ -1666,6 +1688,9 @@ function draw_animation () {
 					else
 						background_img = parseIntArray(bg);
 				}
+			}
+			else {
+				background_img = [255,255,255];
 			}
 		};
 
