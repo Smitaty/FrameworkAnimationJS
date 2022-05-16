@@ -9,7 +9,7 @@ export class Stop extends Instruction {
 	}
 
 	execute() {
-		// Nothing to do
+		// Nothing to do, code execute in Animation.js
 	}
 
 }
