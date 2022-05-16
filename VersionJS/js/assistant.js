@@ -362,7 +362,7 @@ function new_object (object_type) {
 	property.appendChild(input);
 	article1.appendChild(property);
 
-	// angle
+	/*// angle
 	property = document.createElement("property");
 	property.className = "angle";
 	label = document.createElement("label");
@@ -373,7 +373,7 @@ function new_object (object_type) {
 	input.placeholder = angle;
 	input.onchange = function () { change_property(obj_id, this); };
 	property.appendChild(input);
-	article1.appendChild(property);
+	article1.appendChild(property);*/
 	section.appendChild(article1);
 
 	// Instructions
