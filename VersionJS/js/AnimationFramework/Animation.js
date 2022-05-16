@@ -285,11 +285,11 @@ export class Animation {
                         new_object = new Landmark(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y, max_x, max_y);
                         break;
                     case 'object_grid':
-                        let lines = parseInt(read_object.getAttribute("lines"));
+                        let rows = parseInt(read_object.getAttribute("rows"));
                         let columns = parseInt(read_object.getAttribute("columns"));
                         row_height = parseInt(read_object.getAttribute("row_height"));
                         column_width = parseInt(read_object.getAttribute("column_width"));
-                        new_object = new Grid(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, lines, columns, row_height, column_width);
+                        new_object = new Grid(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, rows, columns, row_height, column_width);
                         break;
                     case 'object_table':
                         let values = read_object.getAttribute("values");

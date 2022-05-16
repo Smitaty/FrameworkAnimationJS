@@ -91,7 +91,7 @@ export class Arrow extends AnimatedObject {
         arrow.setAttribute("layer", this.layer);
         arrow.setAttribute("visible", this.visible);
         arrow.setAttribute("opacity", this.opacity);
-        arrow.setAttribute("angle", this.angle); 
+        // arrow.setAttribute("angle", this.angle); 
         arrow.setAttribute("width_line", this._width_line);
         arrow.setAttribute("height_line", this._height_line);
         arrow.setAttribute("width_triangle", this._width_triangle);
