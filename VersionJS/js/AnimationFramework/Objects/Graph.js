@@ -97,7 +97,7 @@ export class Graph extends Landmark {
 		graph.setAttribute("layer", this._layer);
 		graph.setAttribute("visible", this._visible);
 		graph.setAttribute("opacity", this._opacity);
-		graph.setAttribute("angle", this._angle); // degrees
+		// graph.setAttribute("angle", this._angle); // degrees
 		graph.setAttribute("width", this._width);
 		graph.setAttribute("height", this._height);
 		graph.setAttribute("scale_x", this._scale_x);

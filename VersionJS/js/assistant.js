@@ -25,6 +25,7 @@ let instructions_array = new Array();
 let objects_image_id = new Array();
 let removed_objects_identifier = new Array();
 
+// p5 sketch
 let sketch;
 
 // Setup of the listeners on the different elemnt of the DOM
@@ -362,7 +363,7 @@ function new_object (object_type) {
 	property.appendChild(input);
 	article1.appendChild(property);
 
-	// angle
+	/*// angle
 	property = document.createElement("property");
 	property.className = "angle";
 	label = document.createElement("label");
@@ -373,7 +374,7 @@ function new_object (object_type) {
 	input.placeholder = angle;
 	input.onchange = function () { change_property(obj_id, this); };
 	property.appendChild(input);
-	article1.appendChild(property);
+	article1.appendChild(property);*/
 	section.appendChild(article1);
 
 	// Instructions
@@ -848,16 +849,16 @@ function new_object (object_type) {
 			object = new Landmark(obj_id, 30, 110, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y);
 			break;
 		case "Grid":
-			// lines
-			let lines = 3;
+			// rows
+			let rows = 3;
 			property = document.createElement("property");
-			property.className = "lines";
+			property.className = "rows";
 			label = document.createElement("label");
-			label.innerHTML = "lines";
+			label.innerHTML = "rows";
 			property.appendChild(label);
 			input = document.createElement("input");
 			input.type = "number";
-			input.value = lines;
+			input.value = rows;
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
@@ -900,7 +901,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Grid(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, lines, columns, row_height, column_width);
+			object = new Grid(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, rows, columns, row_height, column_width);
 			break;
 		case "Table":
 			// values

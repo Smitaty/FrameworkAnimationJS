@@ -20,6 +20,8 @@ export let LOOP_DELAY_MAX = 60; // lowest speed of the animation, one frame's du
 export let LOOP_DELAY_MIN = 0; // highest speed of the animation, one frame's duration (ms)
 
 export let ANIMATION_PATH;
+export let WIDTH;
+export let HEIGHT;
 
 
 /**********************
@@ -51,6 +53,8 @@ export function load_animation(source_file, target_id, width, height) {
 		// Create the animation object
 		let animation = new Animation(source_file, parent, width, height);
 		ANIMATIONS.push(animation);
+		WIDTH = width;
+		HEIGHT = height;
 
 		// Read the animation's XML file using AJAX
 		let xhr = new XMLHttpRequest();

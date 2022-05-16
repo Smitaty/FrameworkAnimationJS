@@ -72,7 +72,7 @@ export class Rectangle extends AnimatedObject {
         rectangle.setAttribute("layer", this._layer);
         rectangle.setAttribute("visible", this._visible);
         rectangle.setAttribute("opacity", this._opacity);
-        rectangle.setAttribute("angle", this._angle); 
+        // rectangle.setAttribute("angle", this._angle); 
         rectangle.setAttribute("width", this._width);
         rectangle.setAttribute("height", this._height);
         rectangle.setAttribute("round", this._round);
