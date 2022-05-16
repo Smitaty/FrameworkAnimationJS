@@ -106,7 +106,6 @@ function import_xml(input_id) {
 					// Display the value of this property
 					// Try to retrieve the DOM of this property
 					let property_dom = objects_list.lastChild.getElementsByClassName(prop.name)[0];
-					console.table(objects_list);
 					if (property_dom) {
 						// Try to retrieve the input of this property
 						// Otherwise, this is a select option
@@ -374,7 +373,7 @@ function new_object(object_type) {
 	input.placeholder = angle;
 	input.onchange = function () { change_property(obj_id, this); };
 	property.appendChild(input);
-	// article1.appendChild(property);
+	article1.appendChild(property);
 	section.appendChild(article1);
 
 	// Instructions
@@ -1083,8 +1082,34 @@ function new_object(object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
+			// header_line_height
+			let header_line_height = 30;
+			property = document.createElement("property");
+			property.className = "header_line_height";
+			label = document.createElement("label");
+			label.innerHTML = "header_line_height";
+			property.appendChild(label);
+			input = document.createElement("input");
+			input.type = "number";
+			input.value = header_line_height;
+			input.onchange = function () { change_property(obj_id, this); };
+			property.appendChild(input);
+			article1.appendChild(property);
+			// header_column_width
+			let header_column_width = 80;
+			property = document.createElement("property");
+			property.className = "header_column_width";
+			label = document.createElement("label");
+			label.innerHTML = "header_column_width";
+			property.appendChild(label);
+			input = document.createElement("input");
+			input.type = "number";
+			input.value = header_column_width;
+			input.onchange = function () { change_property(obj_id, this); };
+			property.appendChild(input);
+			article1.appendChild(property);
 			// Create table object
-			object = new Table(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, values, tab_row_height, tab_column_width, text_font, text_color, tab_padding, text_halignment, text_valignment, false, false, header_font, header_color, header_background_color);
+			object = new Table(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, values, tab_row_height, tab_column_width, text_font, text_color, tab_padding, text_halignment, text_valignment, false, false, header_font, header_color, header_background_color, header_column_height, header_row_width);
 			break;
 		case "Graph":
 			// We set x-y at 60-60 at default to see it well in preview
