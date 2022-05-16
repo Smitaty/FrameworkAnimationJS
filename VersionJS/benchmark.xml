@@ -28,7 +28,7 @@
 			x="350" 
 			y="150">LA GRILLE</object_grid>
 		<object_grid 
-			visible="true" 
+			visible="false" 
 			layer="2" 
 			background_transparent="false" 
 			background_color="100,55,20" 
@@ -104,8 +104,7 @@
 			border_color="255,0,0"
 			background_color="255,0,0"
 			border_transparency="false"
-			function="Math.sin(x)*2"> width neg height pos
-		</object_graph>
+			function="Math.sin(x)*2">graph</object_graph>
 
 		<object_graph 
 			x="100" y="800"
@@ -212,19 +211,22 @@
 			y="400"
 			layer="6"
 			width="150"
-			heigth="200"
+			height="200"
 			visible="true"
 			background_transparent="false"
 			border_transparency="false"
 			border_color="0,0,0"
 			border_size="1"
+			background_color="0,0,0"
 			max_x="50"
 			max_y="50"
+			min_x="-10"
+			min_y="-10"
 			scale_x="5"
 			scale_y="5"
 			unit_x="a"
 			unit_y="b">Landmark</object_landmark>
-			
+
 		<object_image
 			x="150"
 			y="300"
@@ -232,6 +234,8 @@
 			width="50"
 			height="50"
 			visible="true">Image</object_image>
+
+		<object_copy idcopy="Image" y="250" layer="8">object_copy</object_copy>
 
 	</objects>
 
