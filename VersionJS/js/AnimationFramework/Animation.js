@@ -228,7 +228,7 @@ export class Animation {
                 let padding;
                 let halignment;
                 let valignment;
-                let line_height;
+                let row_height;
                 let column_width;
                 let round;
 
@@ -287,14 +287,14 @@ export class Animation {
                     case 'object_grid':
                         let lines = parseInt(read_object.getAttribute("lines"));
                         let columns = parseInt(read_object.getAttribute("columns"));
-                        line_height = parseInt(read_object.getAttribute("line_height"));
+                        row_height = parseInt(read_object.getAttribute("row_height"));
                         column_width = parseInt(read_object.getAttribute("column_width"));
-                        new_object = new Grid(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, lines, columns, line_height, column_width);
+                        new_object = new Grid(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, lines, columns, row_height, column_width);
                         break;
                     case 'object_table':
                         let values = read_object.getAttribute("values");
                         let has_header_columns = read_object.getAttribute("has_header_columns") ? read_object.getAttribute("has_header_columns") == "true" || read_object.getAttribute("has_header_columns") == "1" : false;
-                        let has_header_lines = read_object.getAttribute("has_header_lines") ? read_object.getAttribute("has_header_lines") == "true" || read_object.getAttribute("has_header_lines") == "1" : false;
+                        let has_header_rows = read_object.getAttribute("has_header_rows") ? read_object.getAttribute("has_header_rows") == "true" || read_object.getAttribute("has_header_rows") == "1" : false;
                         let header_background_color = read_object.getAttribute("header_background_color") ? parseIntArray(read_object.getAttribute("header_background_color")) : background_color;
                         font = read_object.getAttribute("font").split(",");
                         let header_font = read_object.getAttribute("header_font") ? read_object.getAttribute("header_font").split(",") : font;
@@ -303,11 +303,11 @@ export class Animation {
                         padding = read_object.getAttribute("padding") ? parseIntArray(read_object.getAttribute("padding")) : [];
                         halignment = read_object.hasAttribute("halignment") ? read_object.getAttribute("halignment") : "left";
                         valignment = read_object.hasAttribute("valignment") ? read_object.getAttribute("valignment") : "top";
-                        line_height = parseInt(read_object.getAttribute("line_height"));
+                        row_height = parseInt(read_object.getAttribute("row_height"));
                         column_width = parseInt(read_object.getAttribute("column_width"));
-                        let header_line_height = read_object.getAttribute("header_line_height") ? parseInt(read_object.getAttribute("header_line_height")) : line_height;
-                        let header_column_width = read_object.getAttribute("header_column_width") ? parseInt(read_object.getAttribute("header_column_width")) : column_width;
-                        new_object = new Table(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, values, line_height, column_width, font, color, padding, halignment, valignment, has_header_columns, has_header_lines, header_font, header_color, header_background_color, header_column_width, header_line_height);
+                        let header_row_width = read_object.getAttribute("header_row_width") ? parseInt(read_object.getAttribute("header_row_width")) : row_height;
+                        let header_column_height = read_object.getAttribute("header_column_height") ? parseInt(read_object.getAttribute("header_column_height")) : column_width;
+                        new_object = new Table(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, values, row_height, column_width, font, color, padding, halignment, valignment, has_header_columns, has_header_rows, header_font, header_color, header_background_color, header_column_height, header_row_width);
                         break;
                     case 'object_graph':
                         let algorithmic_function = read_object.getAttribute("function");

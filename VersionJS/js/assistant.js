@@ -28,22 +28,22 @@ let removed_objects_identifier = new Array();
 let sketch;
 
 // Setup of the listeners on the different elemnt of the DOM
-document.getElementById("openAnimation").addEventListener("click", function () { ask_popup('Change object identifier', 'Choose the XML file containing the animation to open.<input id=\'animation_file\' type=\'file\' placeholder=\'benchmark.xml\' required />', import_xml, 'animation_file') });
+document.getElementById("openAnimation").addEventListener("click", function () { ask_popup('Change object identifier', 'Choose the XML file containing the animation to open.<input id=\'animation_file\' type=\'file\' placeholder=\'benchmark.xml\' required />', import_xml, 'animation_file'); });
 document.getElementById("exportAnimation").addEventListener('click', export_xml);
-document.getElementById("addText").addEventListener('click', function () { new_object('Text') });
-document.getElementById("addImage").addEventListener('click', function () { new_object('ImageFile') });
-document.getElementById("addRectangle").addEventListener('click', function () { new_object('Rectangle') });
-document.getElementById("addPolygon").addEventListener('click', function () { new_object('Polygon') });
-document.getElementById("addCircle").addEventListener('click', function () { new_object('Circle') });
-document.getElementById("addEllipse").addEventListener('click', function () { new_object('Ellipse') });
-document.getElementById("addLandmark").addEventListener('click', function () { new_object('Landmark') });
-document.getElementById("addGrid").addEventListener('click', function () { new_object('Grid') });
-document.getElementById("addTable").addEventListener('click', function () { new_object('Table') });
-document.getElementById("addGraph").addEventListener('click', function () { new_object('Graph') });
-document.getElementById("addArrow").addEventListener('click', function () { new_object('Arrow') });
-document.getElementById("width").addEventListener('change', function () { sketch.resizeCanvas(this.value, document.getElementById("height").value); update_section_size();});
+document.getElementById("addText").addEventListener('click', function () { new_object('Text'); });
+document.getElementById("addImage").addEventListener('click', function () { new_object('ImageFile'); });
+document.getElementById("addRectangle").addEventListener('click', function () { new_object('Rectangle'); });
+document.getElementById("addPolygon").addEventListener('click', function () { new_object('Polygon'); });
+document.getElementById("addCircle").addEventListener('click', function () { new_object('Circle'); });
+document.getElementById("addEllipse").addEventListener('click', function () { new_object('Ellipse'); });
+document.getElementById("addLandmark").addEventListener('click', function () { new_object('Landmark'); });
+document.getElementById("addGrid").addEventListener('click', function () { new_object('Grid'); });
+document.getElementById("addTable").addEventListener('click', function () { new_object('Table'); });
+document.getElementById("addGraph").addEventListener('click', function () { new_object('Graph'); });
+document.getElementById("addArrow").addEventListener('click', function () { new_object('Arrow'); });
+document.getElementById("width").addEventListener('change', function () { sketch.resizeCanvas(this.value, document.getElementById("height").value); update_section_size(); });
 document.getElementById("height").addEventListener('change', function () { sketch.resizeCanvas(document.getElementById("width").value, this.value); update_section_size(); });
-document.getElementById("myBackground").addEventListener('change', function () { sketch.load_background() });
+document.getElementById("myBackground").addEventListener('change', function () { sketch.load_background(); });
 
 // Include P5.js
 include_animation_files('js/AnimationFramework/');
@@ -51,7 +51,7 @@ wait_for_includes();
 /**
  * Function to check if p5 JS is include and if it isn't wait before starting the animation
  */
-function wait_for_includes() {
+function wait_for_includes () {
 	// Check if animation files are included
 	if (!ANIMATION_FILES_INCLUDED) {
 		console.log("Animation files are not included. Include them by this way :\n<script>include_animation_files(\"path/of/AnimationFramework/\");</script>");
@@ -72,7 +72,7 @@ function wait_for_includes() {
  * @param {String} input_id 
  * @returns 
  */
-function import_xml(input_id) {
+function import_xml (input_id) {
 	let source_file = document.getElementById(input_id).files[0].name;
 	if (source_file === "") return; // stop here if the input is empty (won't try to read the file and will keep the popup active)
 
@@ -141,7 +141,7 @@ function import_xml(input_id) {
  * @param {String} object_type 
  * @returns 
  */
-function new_object(object_type) {
+function new_object (object_type) {
 	let obj_id = ++last_id;
 	let object;
 
@@ -167,7 +167,7 @@ function new_object(object_type) {
 
 	let pen = document.createElement("div");
 	pen.className = "warning";
-	pen.onclick = function () { ask_popup("Change object identifier", "Enter below the new id for the object <b>" + obj_id + "</b>.<input id='new_id' type='text' value='" + objects_array[obj_id].id  + "' required/>", change_id, [obj_id, "new_id"]); };
+	pen.onclick = function () { ask_popup("Change object identifier", "Enter below the new id for the object <b>" + obj_id + "</b>.<input id='new_id' type='text' value='" + objects_array[obj_id].id + "' required/>", change_id, [obj_id, "new_id"]); };
 	pen.innerHTML = "&#128397;";
 	header.appendChild(pen);
 
@@ -314,7 +314,7 @@ function new_object(object_type) {
 	property = document.createElement("property");
 	property.className = "layer";
 	label = document.createElement("label");
-	label.innerHTML = "layer"
+	label.innerHTML = "layer";
 	property.appendChild(label);
 	input = document.createElement("input");
 	input.type = "number";
@@ -420,7 +420,7 @@ function new_object(object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// color
-			let color = [0,0,0];
+			let color = [0, 0, 0];
 			property = document.createElement("property");
 			property.className = "color";
 			label = document.createElement("label");
@@ -636,7 +636,7 @@ function new_object(object_type) {
 			label.innerHTML = "coord_x";
 			property.appendChild(label);
 			input = document.createElement("input");
-			input.type = "text"
+			input.type = "text";
 			input.value = coord_x;
 			input.required = "required";
 			input.onchange = function () { change_property(obj_id, this); };
@@ -708,7 +708,7 @@ function new_object(object_type) {
 			break;
 		case "Landmark":
 			// We set x-y at 60-60 at default to see it well in preview
-			let number_property = document.getElementsByClassName("x").length - 1
+			let number_property = document.getElementsByClassName("x").length - 1;
 			let obj = document.getElementsByClassName("x")[number_property].childNodes[1];
 			obj.placeholder = "30";
 			obj = document.getElementsByClassName("y")[number_property].childNodes[1];
@@ -874,16 +874,16 @@ function new_object(object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			// line_height
-			let line_height = 20;
+			// row_height
+			let row_height = 20;
 			property = document.createElement("property");
-			property.className = "line_height";
+			property.className = "row_height";
 			label = document.createElement("label");
-			label.innerHTML = "line_height";
+			label.innerHTML = "row_height";
 			property.appendChild(label);
 			input = document.createElement("input");
 			input.type = "number";
-			input.value = line_height;
+			input.value = row_height;
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
@@ -900,9 +900,9 @@ function new_object(object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Grid(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, lines, columns, line_height, column_width);
+			object = new Grid(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, lines, columns, row_height, column_width);
 			break;
-		case "Table" :
+		case "Table":
 			// values
 			let values = "";
 			property = document.createElement("property");
@@ -916,16 +916,16 @@ function new_object(object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			// line_height
-			let tab_line_height = "30";
+			// row_height
+			let tab_row_height = "60";
 			property = document.createElement("property");
-			property.className = "line_height";
+			property.className = "row_height";
 			label = document.createElement("label");
-			label.innerHTML = "line_height";
+			label.innerHTML = "row_height";
 			property.appendChild(label);
 			input = document.createElement("input");
 			input.type = "text";
-			input.value = tab_line_height;
+			input.value = tab_row_height;
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
@@ -956,7 +956,7 @@ function new_object(object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// color
-			let text_color = [0,0,0];
+			let text_color = [0, 0, 0];
 			property = document.createElement("property");
 			property.className = "color";
 			label = document.createElement("label");
@@ -1085,7 +1085,7 @@ function new_object(object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// header_color
-			let header_color = [0,0,0];
+			let header_color = [0, 0, 0];
 			property = document.createElement("property");
 			property.className = "header_color";
 			label = document.createElement("label");
@@ -1098,7 +1098,7 @@ function new_object(object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// header_background_color
-			let header_background_color = [150,150,150];
+			let header_background_color = [150, 150, 150];
 			property = document.createElement("property");
 			property.className = "header_background_color";
 			label = document.createElement("label");
@@ -1110,38 +1110,40 @@ function new_object(object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			// header_line_height
-			let header_line_height = 30;
+			// header_row_width
+			let header_row_width = 80;
 			property = document.createElement("property");
-			property.className = "header_line_height";
+			property.className = "header_row_width";
 			label = document.createElement("label");
-			label.innerHTML = "header_line_height";
+			label.innerHTML = "header_row_width";
 			property.appendChild(label);
 			input = document.createElement("input");
 			input.type = "number";
-			input.value = header_line_height;
+			input.value = header_row_width;
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			// header_column_width
-			let header_column_width = 80;
+			// header_column_height
+			let header_column_height = 80;
 			property = document.createElement("property");
-			property.className = "header_column_width";
+			property.className = "header_column_height";
 			label = document.createElement("label");
-			label.innerHTML = "header_column_width";
+			label.innerHTML = "header_column_height";
 			property.appendChild(label);
 			input = document.createElement("input");
 			input.type = "number";
-			input.value = header_column_width;
+			input.value = header_column_height;
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
 			// Create table object
-			object = new Table(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, values, tab_line_height, tab_column_width, text_font, text_color, tab_padding, text_halignment, text_valignment, false, false, header_font, header_color, header_background_color, header_column_width, header_line_height);
+			object = new Table(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer,
+				visible, opacity, angle, values, parseInt(tab_row_height), parseInt(tab_column_width), text_font, text_color, tab_padding, text_halignment, text_valignment,
+				false, false, header_font, header_color, header_background_color, parseInt(header_column_height), parseInt(header_row_width));
 			break;
 		case "Graph":
 			// We set x-y at 60-60 at default to see it well in preview
-			let graph_number_property = document.getElementsByClassName("x").length - 1
+			let graph_number_property = document.getElementsByClassName("x").length - 1;
 			let graph_obj = document.getElementsByClassName("x")[graph_number_property].childNodes[1];
 			graph_obj.placeholder = "60";
 			graph_obj = document.getElementsByClassName("y")[graph_number_property].childNodes[1];
@@ -1394,7 +1396,7 @@ function new_object(object_type) {
  * @param {String} object_id 
  * @param {Element} property_dom 
  */
-function change_property(object_id, property_dom) {
+function change_property (object_id, property_dom) {
 	new SetProperty(null, objects_array[object_id], property_dom.parentNode.className, property_dom.value).execute();
 	//objects_array[object_id].draw();
 	//draw_animation(); // redessiner le canevas depuis le début sinon ca bug...
@@ -1405,7 +1407,7 @@ function change_property(object_id, property_dom) {
  * @param {Array} args , 0: object_id, 1: inpu_id
  * @returns 
  */
-function change_id(args) {
+function change_id (args) {
 	let object_id = args[0];
 	let input_id = args[1];
 
@@ -1425,7 +1427,7 @@ function change_id(args) {
  * Expand the characteristic window of the specified object id
  * @param {String} object_id 
  */
-function expand(object_id) {
+function expand (object_id) {
 	let object_dom = document.getElementById(object_id);
 	object_dom.getElementsByTagName("sectionobj")[0].className = "displayed";
 	object_dom.getElementsByTagName("headerobj")[0].getElementsByTagName("div")[0].className = "active";
@@ -1437,7 +1439,7 @@ function expand(object_id) {
  * Reduce the characteristic window of the specified object id
  * @param {String} object_id 
  */
-function reduce(object_id) {
+function reduce (object_id) {
 	let object_dom = document.getElementById(object_id);
 	object_dom.getElementsByTagName("sectionobj")[0].className = "hidden";
 	object_dom.getElementsByTagName("headerobj")[0].getElementsByTagName("div")[0].className = "";
@@ -1450,7 +1452,7 @@ window.onresize = update_section_size;
 /**
  * Update the size of the section and aside element
  */
-function update_section_size() {
+function update_section_size () {
 	let section = document.getElementsByTagName("section")[0];
 	let aside = document.getElementsByTagName("aside")[0];
 
@@ -1465,7 +1467,7 @@ function update_section_size() {
  * Function to affect random color to the background and borders of the object with specified id
  * @param {String} object_id 
  */
-function customize(object_id) {
+function customize (object_id) {
 	let object = objects_array[object_id];
 
 	// Set the object as visible
@@ -1493,7 +1495,7 @@ function customize(object_id) {
  * Function to remove the object with the specified id
  * @param {String} object_id 
  */
-function remove(object_id) {
+function remove (object_id) {
 	/*// Remove from the objects array (JS)
 	objects_array.splice(objects_array.indexOf(object_id), 1);
 
@@ -1512,7 +1514,7 @@ function remove(object_id) {
 	// Remove from the objects list (HTML)
 	if (document.getElementById(object_id)) {
 		objects_list.removeChild(document.getElementById(object_id));
-	}	
+	}
 
 	//draw_animation(); // redessiner le canevas depuis le début sinon ca bug...
 }
@@ -1521,7 +1523,7 @@ function remove(object_id) {
  * Transform the animation into xml
  * Download the xml file and show the content
  */
-function export_xml() {
+function export_xml () {
 	console.log("--------------------------------\n");
 
 	let docType = document.implementation.createDocumentType('animation', '', 'animation.dtd');
@@ -1578,7 +1580,7 @@ function export_xml() {
 	document.getElementById("convert_popup").className = "display";
 }
 
-function ask_popup(title, contents, callback, args) {
+function ask_popup (title, contents, callback, args) {
 	let popup = document.getElementById("ask_popup");
 
 	popup.getElementsByTagName("h2")[0].innerHTML = title;
@@ -1595,7 +1597,7 @@ function ask_popup(title, contents, callback, args) {
 let canvas;
 let drawing_dom = document.getElementById("drawing");
 
-function isValidColor(strColor) {
+function isValidColor (strColor) {
 	try {
 		let s = new Option().style;
 		s.color = strColor;
@@ -1606,7 +1608,7 @@ function isValidColor(strColor) {
 	}
 }
 
-function isHexColor(strColor) {
+function isHexColor (strColor) {
 	try {
 		let RegExp = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
 		return RegExp.test(strColor);
@@ -1615,14 +1617,14 @@ function isHexColor(strColor) {
 	}
 }
 
-function isRgbColor(strColor) {
+function isRgbColor (strColor) {
 	let result;
-    strColor.includes(",") ? result = true : result = false;
-    return result;
+	strColor.includes(",") ? result = true : result = false;
+	return result;
 }
 
 
-function draw_animation() {
+function draw_animation () {
 
 
 	sketch = new p5(function (draw_ref) {
@@ -1636,7 +1638,7 @@ function draw_animation() {
 
 			// Load the backround
 			draw_ref.load_background();
-		}
+		};
 
 		/** Setup of the canvas */
 		draw_ref.setup = function () { // setup function waits until preload one is done
@@ -1648,7 +1650,7 @@ function draw_animation() {
 			canvas.parent(drawing_dom);
 
 			update_section_size();
-		}
+		};
 
 		/** Drawing loop */
 		draw_ref.draw = function () {
@@ -1671,7 +1673,7 @@ function draw_animation() {
 					}
 				}
 			}
-		}
+		};
 
 		/** Load the background of the canvas */
 		draw_ref.load_background = function () {
@@ -1680,7 +1682,7 @@ function draw_animation() {
 				if (!isValidColor(bg) && !isHexColor(bg) && !isRgbColor(bg)) {
 					background_img = draw_ref.loadImage(bg);
 				} else {
-					if(isValidColor(bg) || isHexColor(bg))
+					if (isValidColor(bg) || isHexColor(bg))
 						background_img = bg;
 					else
 						background_img = parseIntArray(bg);
@@ -1689,7 +1691,7 @@ function draw_animation() {
 			else {
 				background_img = [255,255,255];
 			}
-		}
+		};
 
 		/** Update the layers of the canvas by iterating on the objects_array */
 		draw_ref.update_layers = function () {
@@ -1703,12 +1705,12 @@ function draw_animation() {
 			// Convert and sort the layers set
 			layers = Array.from([...new_layers]);
 			layers.sort();
-		}
+		};
 	});
 
 }
 
-function rand_rgb() {
+function rand_rgb () {
 	let max = 255;
 	// Math.random : [0, 1[
 	return [Math.floor(Math.random() * (max + 1)), Math.floor(Math.random() * (max + 1)), Math.floor(Math.random() * (max + 1))];
