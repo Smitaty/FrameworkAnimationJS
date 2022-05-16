@@ -139,7 +139,7 @@
 <!ELEMENT object_grid (#PCDATA) >
 <!ATTLIST object_grid lines CDATA #REQUIRED >
 <!ATTLIST object_grid columns CDATA #REQUIRED >
-<!ATTLIST object_grid line_height CDATA #REQUIRED >
+<!ATTLIST object_grid row_height CDATA #REQUIRED >
 <!ATTLIST object_grid column_width CDATA #REQUIRED >
 <!ATTLIST object_grid x CDATA #IMPLIED >
 <!ATTLIST object_grid y CDATA #IMPLIED >
@@ -156,16 +156,16 @@
 <!ELEMENT object_table (#PCDATA) >
 <!ATTLIST object_table values CDATA #REQUIRED >
 <!ATTLIST object_table font CDATA #REQUIRED >
-<!ATTLIST object_table line_height CDATA #REQUIRED >
+<!ATTLIST object_table row_height CDATA #REQUIRED >
 <!ATTLIST object_table column_width CDATA #REQUIRED >
 <!ATTLIST object_table halignment (left|center|right) #IMPLIED >
 <!ATTLIST object_table valignment (top|bottom|center|baseline) #IMPLIED >
 <!ATTLIST object_table color CDATA #IMPLIED >
 <!ATTLIST object_table padding CDATA #IMPLIED >
 <!ATTLIST object_table has_header_columns (true|false) #IMPLIED >
-<!ATTLIST object_table has_header_lines (true|false) #IMPLIED >
-<!ATTLIST object_table header_line_height CDATA #IMPLIED >
-<!ATTLIST object_table header_column_width CDATA #IMPLIED >
+<!ATTLIST object_table has_header_rows (true|false) #IMPLIED >
+<!ATTLIST object_table header_row_width CDATA #IMPLIED >
+<!ATTLIST object_table header_column_height CDATA #IMPLIED >
 <!ATTLIST object_table header_background_color CDATA #IMPLIED >
 <!ATTLIST object_table header_color CDATA #IMPLIED >
 <!ATTLIST object_table header_font CDATA #IMPLIED >
@@ -244,7 +244,7 @@
 <!ATTLIST object_copy unit_y CDATA #IMPLIED >
 <!ATTLIST object_copy lines CDATA #IMPLIED >
 <!ATTLIST object_copy columns CDATA #IMPLIED >
-<!ATTLIST object_copy line_height CDATA #IMPLIED >
+<!ATTLIST object_copy row_height CDATA #IMPLIED >
 <!ATTLIST object_copy column_width CDATA #IMPLIED >
 <!ATTLIST object_copy x CDATA #IMPLIED >
 <!ATTLIST object_copy y CDATA #IMPLIED >

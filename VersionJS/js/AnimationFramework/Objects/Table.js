@@ -16,7 +16,7 @@ export class Table extends AnimatedObject {
      * The line's height
      * @type number
      */
-    _line_height;
+    _row_height;
 
     /**
      * The column's width
@@ -145,14 +145,14 @@ export class Table extends AnimatedObject {
      */
     _padding_left;
 
-    _header_column_width;
+    _header_column_height;
 
-    _header_line_height;
+    _header_row_width;
 
-    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, values, line_height, column_width, font, color, padding, halignment, valignment, has_header_columns, has_header_rows, header_font, header_color, header_background_color, header_column_width, header_line_height) {
+    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, values, row_height, column_width, font, color, padding, halignment, valignment, has_header_columns, has_header_rows, header_font, header_color, header_background_color, header_column_height, header_row_width) {
         super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
         this._values = values; // row1col1 | row1col2 | row1col3 $ row2col1 | row2col1
-        this._line_height = line_height;
+        this._row_height = row_height;
         this._column_width = column_width;
         this._font = font; // FontName, FontSize, FontWeight
         this._color = color; // r, g, b
@@ -164,8 +164,8 @@ export class Table extends AnimatedObject {
         this._header_font = header_font; // FontName, FontSize, FontWeight
         this._header_color = header_color; // r, g, b
         this._header_background_color = header_background_color; // r, g, b
-        this._header_column_width = header_column_width;
-        this._header_line_height = header_line_height;
+        this._header_column_height = header_column_height;
+        this._header_row_width = header_row_width;
 
         this._value_tab = [];
         this._index_tab = [];
@@ -183,46 +183,112 @@ export class Table extends AnimatedObject {
 
     draw (drawing) {
         super.draw(drawing);
-        drawing.rect(this._x, this._y, this._header_column_width + this._column_width * (this._nb_columns - 1), this._header_line_height + this._line_height * (this._nb_rows - 1));
 
+        let total_width;
+        let total_height;
+
+        // Compute total height 
+        if (this._has_header_rows) {
+            total_width = this._header_row_width + this._column_width * (this._nb_columns - 1);
+        } else {
+            total_width = this._column_width * this._nb_columns;
+        }
+
+        // Compute total width
+        if (this._has_header_columns) {
+            total_height = this._header_column_height + this._row_height * (this._nb_rows - 1);
+        } else {
+            total_height = this._row_height * this._nb_rows;
+        }
+
+        // Draw background
+        drawing.rect(this._x, this._y, total_width, total_height);
+
+        // Draw header backround column
         if (this._has_header_columns) {
             drawing.push();
             drawing.fill(this._header_background_color[0], this._header_background_color[1], this._header_background_color[2], this._opacity * 255);
-            drawing.rect(this._x, this._y, this._header_column_width + this._column_width * (this._nb_columns-1), this._header_line_height);
+            drawing.rect(this._x, this._y, total_width, this._header_column_height);
             drawing.pop();
         }
 
+        // Draw header backround rows
         if (this._has_header_rows) {
             drawing.push();
             drawing.fill(this._header_background_color[0], this._header_background_color[1], this._header_background_color[2], this._opacity * 255);
-            drawing.rect(this._x, this._y, this._header_column_width, this._header_line_height + this._line_height * (this._nb_rows - 1));
+            drawing.rect(this._x, this._y, this._header_column_height, total_height);
             drawing.pop();
         }
 
+
+        // Draw horizontal lines
         for (let i = 1; i < this._nb_rows; ++i) {
-            if (this._has_header_rows && i == 1) {
-                drawing.line(this._x, this._y + this._header_line_height, this._x + this._header_column_width + this._column_width * (this._nb_columns-1), this._y + this._header_line_height);
+            if (this._has_header_columns) {
+                if (i == 1) {
+                    drawing.line(
+                        this._x,
+                        this._y + this._header_column_height,
+                        this._x + total_width,
+                        this._y + this._header_column_height
+                    );
+                } else {
+                    drawing.line(
+                        this._x,
+                        this._y + this._header_column_height + (i - 1) * this._row_height,
+                        this._x + total_width,
+                        this._y + this._header_column_height + (i - 1) * this._row_height
+                    );
+                }
             } else {
-                drawing.line(this._x, this._y + this._header_line_height + (i - 1) * this._line_height, this._x + this._header_column_width + this._column_width * (this._nb_columns-1), this._y + this._header_line_height + (i - 1) * this._line_height);
-            }
-        }
-        for (let i = 1; i < this._nb_columns; ++i) {
-            if (this._has_header_columns && i == 1) {
-                drawing.line(this._x + i * this._header_column_width, this._y, this._x + i * this._header_column_width, this._y + this._header_line_height + this._line_height * (this._nb_rows-1));
-            } else {
-                drawing.line(this._x + this._header_column_width + (i - 1) * this._column_width, this._y, this._x + this._header_column_width + (i - 1) * this._column_width, this._y + this._header_line_height + this._line_height * (this._nb_rows - 1));
+                drawing.line(
+                    this._x,
+                    this._y + i * this._row_height,
+                    this._x + total_width,
+                    this._y + i * this._row_height
+                );
+
             }
         }
 
+        // Draw vertical lines
+        for (let i = 1; i < this._nb_columns; ++i) {
+            if (this._has_header_rows) {
+                if (i == 1) {
+                    drawing.line(
+                        this._x + i * this._header_row_width,
+                        this._y,
+                        this._x + i * this._header_row_width,
+                        this._y + total_height
+                    );
+                } else {
+                    drawing.line(
+                        this._x + this._header_row_width + (i - 1) * this._column_width,
+                        this._y,
+                        this._x + this._header_row_width + (i - 1) * this._column_width,
+                        this._y + total_height
+                    );
+                }
+            } else {
+                drawing.line(
+                    this._x + i * this._column_width,
+                    this._y,
+                    this._x + i * this._column_width,
+                    this._y + total_height
+                );
+
+            }
+        }
+
+        // Appli text attributes
         drawing.fill(this._color[0], this._color[1], this._color[2], this._opacity * 255);
         drawing.textFont(this._font[0]);
         drawing.textSize(parseInt(this._font[1]));
         drawing.textStyle(this._font[2] == "bold" ? drawing.BOLD : this._font[2] == "italic" ? drawing.ITALIC : drawing.NORMAL);
-        // Text alignment
         drawing.textAlign(this._halignment == "right" ? drawing.RIGHT : this._halignment == "center" ? drawing.CENTER : drawing.LEFT,
             this._valignment == "center" ? drawing.CENTER : this._valignment == "bottom" ? drawing.BOTTOM : this._valignment == "baseline" ? drawing.BASELINE : drawing.TOP);
         drawing.noStroke();
 
+        // Iterate through tab to draw text
         for (let i = 0; i < this._index_tab.length; i++) {
             let index_value = this._index_tab[i]; // index_value[0] -> n° column ; index_value[1] -> n° row
             let coords = this._coord_cells.get(index_value); // coords[0] -> x ; coords[1] -> y
@@ -239,10 +305,10 @@ export class Table extends AnimatedObject {
                         drawing.textSize(parseInt(this._header_font[1]));
                         drawing.textStyle(this._header_font[2] == "bold" ? drawing.BOLD : this._header_font[2] == "italic" ? drawing.ITALIC : drawing.NORMAL);
                     }
-                    this.drawText(drawing, value, coords[0], coords[1], coords[2]- coords[0], coords[3] - coords[1]);
+                    this.drawText(drawing, value, coords[0], coords[1], coords[2] - coords[0], coords[3] - coords[1]);
                     drawing.pop();
                 } else {
-                    this.drawText(drawing, value, coords[0], coords[1], coords[2]- coords[0], coords[3] - coords[1]);
+                    this.drawText(drawing, value, coords[0], coords[1], coords[2] - coords[0], coords[3] - coords[1]);
                 }
             }
         }
@@ -269,7 +335,7 @@ export class Table extends AnimatedObject {
     }
 
     isClicked (x, y) {
-        return (x >= this._x) && (x <= this._nb_columns * this._column_width) && (y >= this._y) && (y <= this._nb_rows * this._line_height);
+        return (x >= this._x) && (x <= this._nb_columns * this._column_width) && (y >= this._y) && (y <= this._nb_rows * this._row_height);
     }
 
     toXml () {
@@ -292,23 +358,23 @@ export class Table extends AnimatedObject {
         table.setAttribute("padding", this._padding);
         table.setAttribute("halignment", this._halignment);
         table.setAttribute("valignment", this._valignment);
-        table.setAttribute("line_height", this._line_height);
+        table.setAttribute("row_height", this._row_height);
         table.setAttribute("column_width", this._column_width);
         table.setAttribute("has_header_columns", this._has_header_columns);
         table.setAttribute("has_header_rows", this._has_header_rows);
         table.setAttribute("header_background_color", this._header_background_color);
         table.setAttribute("header_color", this._header_color);
         table.setAttribute("header_font", this._header_font);
-        table.setAttribute("header_line_height", this._header_line_height);
-        table.setAttribute("header_column_width", this._header_column_width);
+        table.setAttribute("header_row_width", this._header_row_width);
+        table.setAttribute("header_column_height", this._header_column_height);
         return table;
     }
 
     clone () {
         return new Table(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency,
-            this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._values, this._line_height, this._column_width,
+            this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._values, this._row_height, this._column_width,
             this._font, this._color, this._padding, this._halignment, this._valignment, this._has_header_columns, this._has_header_rows, this._header_font,
-            this._header_color, this._header_background_color, this._header_column_width, this._header_line_height);
+            this._header_color, this._header_background_color, this._header_column_height, this._header_row_width);
     }
 
     fillValueTab () {
@@ -334,13 +400,54 @@ export class Table extends AnimatedObject {
         this._index_tab = [];
         for (let i = 0; i < this._nb_rows; i++) {
 
-            let y_start = (this._has_header_columns && i == 0) ? this._y : this._y + this._header_line_height + (i - 1) * this._line_height;
-            let y_end = (this._has_header_columns && i == 0) ? y_start + this._header_line_height : y_start + this._line_height;
+
+            let y_start;
+            if (this._has_header_columns) {
+                if (i == 0) {
+                    y_start = this._y;
+                } else {
+                    y_start = this._y + this._header_column_height + (i - 1) * this._row_height;
+                }
+            } else {
+                y_start = this._y + i * this._row_height;
+            }
+
+            let y_end;
+            if (this._has_header_columns) {
+                if (i == 0) {
+                    y_end = y_start + this._header_column_height;
+                } else {
+                    y_end = y_start + this._row_height;
+                }
+            } else {
+                y_end = y_start + this._row_height;
+            }
 
             for (let j = 0; j < this._nb_columns; j++) {
 
-                let x_start = (this._has_header_rows && j == 0) ? this._x : this._x + this._header_column_width + (j - 1) * this._column_width;
-                let x_end = (this._has_header_rows && j == 0) ? x_start + this._header_column_width : x_start + this._column_width;
+                let x_start;
+                if (this._has_header_rows) {
+                    if (j == 0) {
+                        x_start = this._x;
+                    } else {
+                        x_start = this._x + this._header_row_width + (j - 1) * this._column_width;
+                    }
+                } else {
+                    x_start = this._x + j * this._column_width;
+                }
+
+                let x_end;
+                if (this._has_header_rows) {
+
+                    if (j == 0) {
+                        x_end = x_start + this._header_row_width;
+                    } else {
+                        x_end = x_start + this._column_width;
+                    }
+                } else {
+                    x_end = x_start + this._column_width;
+                }
+
                 let index_value = [i, j];
                 let cell = [x_start, y_start, x_end, y_end];
                 this._coord_cells.set(index_value, cell);
@@ -393,12 +500,12 @@ export class Table extends AnimatedObject {
         this._color = value;
     }
 
-    get line_height () {
-        return this._line_height;
+    get row_height () {
+        return this._row_height;
     }
 
-    set line_height (value) {
-        this._line_height = value;
+    set row_height (value) {
+        this._row_height = value;
         this.fillCoordCells();
     }
 
@@ -491,17 +598,17 @@ export class Table extends AnimatedObject {
         this._header_font = value;
     }
 
-    get _header_column_width () {
-        return this._header_column_width;
+    get _header_column_height () {
+        return this._header_column_height;
     }
-    set _header_column_width (value) {
-        this._header_column_width = value;
+    set _header_column_height (value) {
+        this._header_column_height = value;
     }
 
-    get header_line_height () {
-        return this._header_line_height;
+    get header_row_width () {
+        return this._header_row_width;
     }
-    set header_line_height (value) {
-        this._header_line_height = value;
+    set header_row_width (value) {
+        this._header_row_width = value;
     }
 }

@@ -847,16 +847,16 @@ function new_object(object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			// line_height
-			let line_height = 20;
+			// row_height
+			let row_height = 20;
 			property = document.createElement("property");
-			property.className = "line_height";
+			property.className = "row_height";
 			label = document.createElement("label");
-			label.innerHTML = "line_height";
+			label.innerHTML = "row_height";
 			property.appendChild(label);
 			input = document.createElement("input");
 			input.type = "number";
-			input.value = line_height;
+			input.value = row_height;
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
@@ -873,7 +873,7 @@ function new_object(object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Grid(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, lines, columns, line_height, column_width);
+			object = new Grid(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, lines, columns, row_height, column_width);
 			break;
 		case "Table" :
 			// values
@@ -889,16 +889,16 @@ function new_object(object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			// line_height
-			let tab_line_height = "30";
+			// row_height
+			let tab_row_height = "30";
 			property = document.createElement("property");
-			property.className = "line_height";
+			property.className = "row_height";
 			label = document.createElement("label");
-			label.innerHTML = "line_height";
+			label.innerHTML = "row_height";
 			property.appendChild(label);
 			input = document.createElement("input");
 			input.type = "text";
-			input.value = tab_line_height;
+			input.value = tab_row_height;
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
@@ -1084,7 +1084,7 @@ function new_object(object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// Create table object
-			object = new Table(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, values, tab_line_height, tab_column_width, text_font, text_color, tab_padding, text_halignment, text_valignment, false, false, header_font, header_color, header_background_color);
+			object = new Table(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, values, tab_row_height, tab_column_width, text_font, text_color, tab_padding, text_halignment, text_valignment, false, false, header_font, header_color, header_background_color);
 			break;
 		case "Graph":
 			// We set x-y at 60-60 at default to see it well in preview

@@ -134,8 +134,8 @@ export class SetProperty extends Instruction {
 			case "columns":
 				this.target.columns = parseInt(this.value) | 0;
 				break;
-			case "line_height":
-				this.target.line_height = parseInt(this.value) | 0;
+			case "row_height":
+				this.target.row_height = parseInt(this.value) | 0;
 				break;
 			case "column_width":
 				this.target.column_width = parseInt(this.value) | 0;
@@ -160,11 +160,11 @@ export class SetProperty extends Instruction {
 			case "header_background_color":
 				this.target.header_background_color = parseIntArray(this.value);
 				break;
-			case "header_line_height":
-				this.target.header_line_height = parseInt(this.value);
+			case "header_row_width":
+				this.target.header_row_width = parseInt(this.value);
 				break;
-			case "header_column_width":
-				this.target.header_column_width = parseInt(this.value);
+			case "header_column_height":
+				this.target.header_column_height = parseInt(this.value);
 				break;
 
 			// graph

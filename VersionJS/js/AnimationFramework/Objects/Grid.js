@@ -34,13 +34,13 @@ export class Grid extends AnimatedObject {
      * The line height
      * @type number
      */
-    _line_height;
-    get line_height () {
-        return this._line_height;
+    _row_height;
+    get row_height () {
+        return this._row_height;
     }
   
-    set line_height (value) {
-        this._line_height = value;
+    set row_height (value) {
+        this._row_height = value;
     }
 
     /** 
@@ -55,29 +55,29 @@ export class Grid extends AnimatedObject {
         this._column_width = value;
     }
 
-    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, lines, columns, line_height, column_width) {
+    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, lines, columns, row_height, column_width) {
         super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
         this._lines = lines;
         this._columns = columns;
-        this._line_height = line_height;
+        this._row_height = row_height;
         this._column_width = column_width;
     }
 
     draw (drawing) {
       drawing.push();
         super.draw(drawing);
-        drawing.rect(this._x, this._y, this._column_width * this._columns, this._line_height * this._lines);
+        drawing.rect(this._x, this._y, this._column_width * this._columns, this._row_height * this._lines);
         for (let i = 1; i < this._lines; ++i) {
-            drawing.line(this._x, this._y + i * this._line_height, this._x + this._column_width * this._columns, this._y + i * this._line_height);
+            drawing.line(this._x, this._y + i * this._row_height, this._x + this._column_width * this._columns, this._y + i * this._row_height);
         }
         for (let i = 1; i < this._columns; ++i) {
-            drawing.line(this._x + i * this._column_width, this._y, this._x + i * this._column_width, this._y + this._line_height * this._lines);
+            drawing.line(this._x + i * this._column_width, this._y, this._x + i * this._column_width, this._y + this._row_height * this._lines);
         }
         drawing.pop();
     }
 
     isClicked (x, y, drawing) {
-        return (x >= this._x) && (x <= this._columns * this._column_width) && (y >= this._y) && (y <= this._lines * this._line_height);
+        return (x >= this._x) && (x <= this._columns * this._column_width) && (y >= this._y) && (y <= this._lines * this._row_height);
     }
 
     toXml () {
@@ -96,12 +96,12 @@ export class Grid extends AnimatedObject {
         // grid.setAttribute("angle", this._angle); // degrees
         grid.setAttribute("lines", this._lines);
         grid.setAttribute("columns", this._columns);
-        grid.setAttribute("line_height", this._line_height);
+        grid.setAttribute("row_height", this._row_height);
         grid.setAttribute("column_width", this._column_width);
         return grid;
     }
 
     clone () {
-        return new Grid(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._state, this._layer, this._visible, this._opacity, this._angle, this._lines, this._columns, this._line_height, this._column_width);
+        return new Grid(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._state, this._layer, this._visible, this._opacity, this._angle, this._lines, this._columns, this._row_height, this._column_width);
     }
 }
