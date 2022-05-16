@@ -25,6 +25,7 @@ let instructions_array = new Array();
 let objects_image_id = new Array();
 let removed_objects_identifier = new Array();
 
+// p5 sketch
 let sketch;
 
 // Setup of the listeners on the different elemnt of the DOM

@@ -3,6 +3,7 @@
  */
 import { Text } from "../Objects/Text.js";
 import { Instruction } from "./Instruction.js";
+import { WIDTH } from '../animation_controller.js';
 export class CenterX extends Instruction {
 
 	constructor(object) {

@@ -454,7 +454,7 @@ export class Animation {
                             new_instruction = new Blink(this.objects.get(object_id), times, delay, this.loop_delay);
                             break;
                         case 'stop':
-                            new_instruction = new Stop(null);
+                            new_instruction = new Stop(this);
                             break;
                         case 'center':
                             new_instruction = new Center(this.objects.get(object_id));
@@ -547,6 +547,7 @@ export class Animation {
     setup (drawing) {
         this.canvas = drawing.createCanvas(this.width, this.height);
         this.canvas.parent(this.parent);
+        this.stop = false;
 
         //drawing.frameRate(1);
 
@@ -593,6 +594,11 @@ export class Animation {
 
             this.clearButton.draw(drawing);
         }
+
+        if (this.stop === true) {
+            console.log('est');
+            drawing.noLoop();
+        }
     }
 
     canvasClicked (drawing) {
@@ -625,5 +631,4 @@ export class Animation {
             this.marker_shape[this.marker_shape.length - 1].push(drawing.createVector(drawing.mouseX, drawing.mouseY));
         }
     }
-
 }
