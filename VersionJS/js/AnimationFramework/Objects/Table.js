@@ -149,7 +149,10 @@ export class Table extends AnimatedObject {
 
     _header_row_width;
 
-    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, values, row_height, column_width, font, color, padding, halignment, valignment, has_header_columns, has_header_rows, header_font, header_color, header_background_color, header_column_height, header_row_width) {
+    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer,
+        visible, opacity, angle, values, row_height, column_width, font, color, padding, halignment, valignment,
+        has_header_columns, has_header_rows, header_font, header_color, header_background_color, header_column_height, header_row_width) {
+
         super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
         this._values = values; // row1col1 | row1col2 | row1col3 $ row2col1 | row2col1
         this._row_height = row_height;
@@ -398,53 +401,39 @@ export class Table extends AnimatedObject {
 
     fillCoordCells () {
         this._index_tab = [];
+
         for (let i = 0; i < this._nb_rows; i++) {
 
 
-            let y_start;
+            let y_start = 0;
+            let y_end = 0;
+
             if (this._has_header_columns) {
                 if (i == 0) {
                     y_start = this._y;
-                } else {
-                    y_start = this._y + this._header_column_height + (i - 1) * this._row_height;
-                }
-            } else {
-                y_start = this._y + i * this._row_height;
-            }
-
-            let y_end;
-            if (this._has_header_columns) {
-                if (i == 0) {
                     y_end = y_start + this._header_column_height;
                 } else {
+                    y_start = this._y + this._header_column_height + (i - 1) * this._row_height;
                     y_end = y_start + this._row_height;
                 }
             } else {
+                y_start = this._y + i * this._row_height;
                 y_end = y_start + this._row_height;
             }
 
             for (let j = 0; j < this._nb_columns; j++) {
-
-                let x_start;
+                let x_start = 0;
+                let x_end = 0;
                 if (this._has_header_rows) {
                     if (j == 0) {
                         x_start = this._x;
-                    } else {
-                        x_start = this._x + this._header_row_width + (j - 1) * this._column_width;
-                    }
-                } else {
-                    x_start = this._x + j * this._column_width;
-                }
-
-                let x_end;
-                if (this._has_header_rows) {
-
-                    if (j == 0) {
                         x_end = x_start + this._header_row_width;
                     } else {
+                        x_start = this._x + this._header_row_width + (j - 1) * this._column_width;
                         x_end = x_start + this._column_width;
                     }
                 } else {
+                    x_start = this._x + j * this._column_width;
                     x_end = x_start + this._column_width;
                 }
 
@@ -487,9 +476,9 @@ export class Table extends AnimatedObject {
         return this._values;
     }
     set values (value) {
+        this._values = value;
         this.fillValueTab();
         this.fillCoordCells();
-        this._values = value;
     }
 
     get color () {
