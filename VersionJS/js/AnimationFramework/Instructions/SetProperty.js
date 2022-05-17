@@ -128,8 +128,8 @@ export class SetProperty extends Instruction {
 				break;
 
 			// grid
-			case "lines":
-				this.target.lines = parseInt(this.value) | 0;
+			case "rows":
+				this.target.rows = parseInt(this.value) | 0;
 				break;
 			case "columns":
 				this.target.columns = parseInt(this.value) | 0;

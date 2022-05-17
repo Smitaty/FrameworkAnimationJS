@@ -124,6 +124,8 @@
 <!ATTLIST object_landmark unit_y CDATA #REQUIRED >
 <!ATTLIST object_landmark max_x CDATA #REQUIRED >
 <!ATTLIST object_landmark max_y CDATA #REQUIRED >
+<!ATTLIST object_landmark min_x CDATA #REQUIRED >
+<!ATTLIST object_landmark min_y CDATA #REQUIRED >
 <!ATTLIST object_landmark x CDATA #IMPLIED >
 <!ATTLIST object_landmark y CDATA #IMPLIED >
 <!ATTLIST object_landmark background_color CDATA #IMPLIED >

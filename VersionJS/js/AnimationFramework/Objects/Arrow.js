@@ -91,7 +91,7 @@ export class Arrow extends AnimatedObject {
         arrow.setAttribute("layer", this.layer);
         arrow.setAttribute("visible", this.visible);
         arrow.setAttribute("opacity", this.opacity);
-        arrow.setAttribute("angle", this.angle); 
+        // arrow.setAttribute("angle", this.angle); 
         arrow.setAttribute("width_line", this._width_line);
         arrow.setAttribute("height_line", this._height_line);
         arrow.setAttribute("width_triangle", this._width_triangle);
@@ -99,8 +99,8 @@ export class Arrow extends AnimatedObject {
         arrow.setAttribute("rotation", this._rotation);
         return arrow;
     }
-    
+
     clone() {
-        return new Arrow(this.id, this.x, this.y, this.background_color, this.background_transparent, this.border_color, this.border_transparency, this.state, this.layer, this.visible, this.opacity, this.angle, this._width_line, this._height_line, this._width_triangle, this._height_triangle, this._rotation);
+        return new Arrow(this.id, this.x, this.y, this.background_color, this.background_transparent, this.border_color, this.border_transparency, this._border_size, this.state, this.layer, this.visible, this.opacity, this.angle, this._width_line, this._height_line, this._width_triangle, this._height_triangle, this._rotation);
     }
 }
