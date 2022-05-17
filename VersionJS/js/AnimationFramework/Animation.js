@@ -307,8 +307,8 @@ export class Animation {
                         valignment = read_object.hasAttribute("valignment") ? read_object.getAttribute("valignment") : "top";
                         row_height = parseInt(read_object.getAttribute("row_height"));
                         column_width = parseInt(read_object.getAttribute("column_width"));
-                        let header_row_width = read_object.hasAttribute("header_row_width") ? parseInt(read_object.getAttribute("header_row_width")) : row_height;
-                        let header_column_height = read_object.hasAttribute("header_column_height") ? parseInt(read_object.getAttribute("header_column_height")) : column_width;
+                        let header_row_width = read_object.hasAttribute("header_row_width") ? parseInt(read_object.getAttribute("header_row_width")) : column_width;
+                        let header_column_height = read_object.hasAttribute("header_column_height") ? parseInt(read_object.getAttribute("header_column_height")) : row_height;
                         new_object = new Table(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, values, row_height, column_width, font, color, padding, halignment, valignment, has_header_columns, has_header_rows, header_font, header_color, header_background_color, header_column_height, header_row_width);
                         break;
                     case 'object_graph':
