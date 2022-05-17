@@ -45,6 +45,13 @@ Enfin, pour charger une animation contenue dans un fichier XML, spécifier l'emp
 ```javascript
 Animation.load_animation("benchmark.xml", "animation", 1400, 1000);
 ```
+### Test en local
+Pour tester le fonctionnement en local, il faut démarrer un serveur web (pour éviter l'erreur https://developer.mozilla.org/fr/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp).
+Par exemple il est possible de lancer un serveur web à l'aide de la commande :
+
+```shell
+python3 -m http.server
+```
 
 ## Développeurs
 
