@@ -28,6 +28,7 @@
 				halignment="center"
 				valignment="center"
 				has_header_rows="true"
+				header_row_width="60"
 				header_background_color="243,156,18"
 				header_color="0,0,0"
 				values="src 1 | a3 | a2 | a1 | a0">src1</object_table>
@@ -50,6 +51,7 @@
 				halignment="center"
 				valignment="center"
 				has_header_rows="true"
+				header_row_width="60"
 				header_background_color="243,156,18"
 				header_color="0,0,0"
 				values="src 2 | b3 | b2 | b1 | b0">src2</object_table>
@@ -72,6 +74,7 @@
 				halignment="center"
 				valignment="center"
 				has_header_rows="true"
+				header_row_width="60"
 				header_background_color="243,156,18"
 				header_color="0,0,0"
 				values="dest | b3 + b2 | b1 + b0 | a3 + a2 | a1 + a0">dest</object_table>
@@ -125,6 +128,7 @@
 				halignment="center"
 				valignment="center"
 				has_header_rows="true"
+				header_row_width="90"
 				header_background_color="19,141,117"
 				header_color="0,0,0"
 				values="src 2 | 8 | 7 | 6 | 5">ex_src2</object_table>
@@ -147,6 +151,7 @@
 				halignment="center"
 				valignment="center"
 				has_header_rows="true"
+				header_row_width="90"
 				header_background_color="19,141,117"
 				header_color="0,0,0"
 				values="dest ||||">ex_dest</object_table>

@@ -80,16 +80,17 @@ Animation.load_animation("animation.xml", "anim1", 1600, 900);
 			<ul>
 				<li><b>speed</b> : permet de modifier la vitesse de l'animation</li>
 				<li><b>init</b> : permet d'indiquer la présence d'un bouton avant le début de l'animation</li>
-				<li><b>background</b> : permet de spécifier une image de fond</li>
+				<li><b>background</b> : permet de spécifier une couleur ou image de fond</li>
 				<li><b>objects</b> : permet de décrire les différents objets de l'animation</li>
 				<li><b>programs</b> : permet de décrire les actions associées aux objets</li>
 			</ul>
 
 			<h3>3.1 Les objets</h3>
 
-			Le point d'ancrage d'un objet est en haut à gauche de sa boite rectangulaire minimale telle qu'elle
-			contienne tous ses points.<br>
-			L'origine du canevas est en haut à gauche de ce dernier et est positif vers la droite et vers le bas.<br>
+			Le point d'ancrage d'un objet est en haut à gauche de sa boite rectangulaire minimale telle
+			qu'elle contienne tous ses points.<br>
+			L'origine du canevas est en haut à gauche de ce dernier et est positif vers la droite et vers le
+			bas.<br>
 			L'image suivante permet d'illustrer ces deux informations :<br>
 
 			<img src="canevas_reperes.svg" width="500px" /><br>
@@ -115,7 +116,8 @@ Animation.load_animation("animation.xml", "anim1", 1600, 900);
 			Les attributs communs à tous les objets sont les suivants :
 			<ul>
 				<li><tt>id</tt> : Identifiant de l'objet (ce n'est pas un attribut XML mais la valeur du noeud
-					<tt>object_xxx</tt>)</li>
+					<tt>object_xxx</tt>)
+				</li>
 				<li><tt>x (0 par défaut)</tt> : Position de l'objet dans le canevas en x</li>
 				<li><tt>y (0 par défaut)</tt> : Position de l'objet dans le canevas en y</li>
 				<li><tt>background_color ("0, 0, 0" par défaut)</tt> : Couleur d'arrière-plan de l'objet</li>
@@ -123,10 +125,10 @@ Animation.load_animation("animation.xml", "anim1", 1600, 900);
 				<li><tt>border_color ("0, 0, 0" par défaut)</tt> : Couleur de bordure de l'objet</li>
 				<li><tt>border_transparency (false par défaut)</tt> : La bordure est transparente</li>
 				<li><tt>border_size (1 par défaut)</tt> : Epaisseur de la bordure</li>
-				<li><tt>layer (0 par défaut)</tt> : Indice du plan de l'objet (les couches supérieures sont d'un indice
-					plus élevé que les autres)</li>
+				<li><tt>layer (0 par défaut)</tt> : Indice du plan de l'objet (les couches supérieures sont d'un
+					indice plus élevé que les autres)</li>
 				<li><tt>visible (true par défaut)</tt> : L'objet est visible</li>
-				<li><tt>opacity (1 par défaut)</tt> : Opacité de l'objet (nombre décimal entre 0 et 1, 1 étant
+				<li><tt>opacity (255 par défaut)</tt> : Opacité de l'objet (nombre entier entre 0 et 255, 255 étant
 					totalement opaque)</li>
 			</ul>
 
@@ -138,9 +140,9 @@ Animation.load_animation("animation.xml", "anim1", 1600, 900);
 
 			<table style="margin:auto;width:90%;">
 				<tr>
-					<th style="text-align:center;width:25%" >Instruction</th>
-					<th style="text-align:center;width:25%" >Attributs</th>
-					<th style="text-align:center;width:50%" >Description</th>
+					<th style="text-align:center;width:25%">Instruction</th>
+					<th style="text-align:center;width:25%">Attributs</th>
+					<th style="text-align:center;width:50%">Description</th>
 				</tr>
 				<tr>
 					<td><b> setx </b> </td>
@@ -238,9 +240,9 @@ Animation.load_animation("animation.xml", "anim1", 1600, 900);
 
 			<table style="margin:auto;width:90%;">
 				<tr>
-					<th style="text-align:center;width:25%" >Instruction</th>
-					<th style="text-align:center;width:25%" >Attributs</th>
-					<th style="text-align:center;width:50%" >Description</th>
+					<th style="text-align:center;width:25%">Instruction</th>
+					<th style="text-align:center;width:25%">Attributs</th>
+					<th style="text-align:center;width:50%">Description</th>
 				</tr>
 				<tr>
 					<td><b> sleep </b> </td>
@@ -289,9 +291,9 @@ Animation.load_animation("animation.xml", "anim1", 1600, 900);
 
 			<table style="margin:auto;width:90%;">
 				<tr>
-					<th style="text-align:center;width:25%" >Instruction</th>
-					<th style="text-align:center;width:25%" >Attributs</th>
-					<th style="text-align:center;width:50%" >Description</th>
+					<th style="text-align:center;width:25%">Instruction</th>
+					<th style="text-align:center;width:25%">Attributs</th>
+					<th style="text-align:center;width:50%">Description</th>
 				</tr>
 				<tr>
 					<td><b> visible </b> </td>
@@ -375,9 +377,9 @@ Animation.load_animation("animation.xml", "anim1", 1600, 900);
 
 			<table style="margin:auto;width:90%;">
 				<tr>
-					<th style="text-align:center;width:25%" >Instruction</th>
-					<th style="text-align:center;width:25%" >Attributs</th>
-					<th style="text-align:center;width:50%" >Description</th>
+					<th style="text-align:center;width:25%">Instruction</th>
+					<th style="text-align:center;width:25%">Attributs</th>
+					<th style="text-align:center;width:50%">Description</th>
 				</tr>
 				<tr>
 					<td><b> click </b> </td>
