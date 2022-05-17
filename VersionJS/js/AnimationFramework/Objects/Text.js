@@ -278,7 +278,7 @@ export class Text extends AnimatedObject {
 		text.setAttribute("layer", this._layer);
 		text.setAttribute("visible", this._visible);
 		text.setAttribute("opacity", this._opacity);
-		text.setAttribute("angle", this._angle); // degrees
+		// text.setAttribute("angle", this._angle); // degrees
 		text.setAttribute("text", this._text);
 		text.setAttribute("font", this._font); // FontName, FontSize, FontWeight
 		text.setAttribute("color", this._color); // r, g, b
