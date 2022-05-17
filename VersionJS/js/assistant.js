@@ -434,7 +434,7 @@ function new_object (object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// padding
-			let padding = 0;
+			let padding = [5];
 			property = document.createElement("property");
 			property.className = "padding";
 			label = document.createElement("label");
@@ -442,7 +442,7 @@ function new_object (object_type) {
 			property.appendChild(label);
 			input = document.createElement("input");
 			input.type = "text";
-			input.placeholder = padding;
+			input.placeholder = padding[0];
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
@@ -969,7 +969,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			// padding
+			// tab_padding
 			let tab_padding = 0;
 			property = document.createElement("property");
 			property.className = "padding";
@@ -982,7 +982,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			// halignment
+			// text_halignment
 			let text_halignment = "center";
 			property = document.createElement("property");
 			property.className = "halignment";
@@ -1006,7 +1006,7 @@ function new_object (object_type) {
 			input.appendChild(option);
 			property.appendChild(input);
 			article1.appendChild(property);
-			// valignment
+			// text_valignment
 			let text_valignment = "center";
 			property = document.createElement("property");
 			property.className = "valignment";
