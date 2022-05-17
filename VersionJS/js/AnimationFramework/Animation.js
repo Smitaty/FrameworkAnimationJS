@@ -282,7 +282,9 @@ export class Animation {
                         let unit_y = read_object.getAttribute("unit_y");
                         let max_x = parseInt(read_object.getAttribute("max_x"));
                         let max_y = parseInt(read_object.getAttribute("max_y"));
-                        new_object = new Landmark(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y, max_x, max_y);
+                        let min_x = parseInt(read_object.getAttribute("min_x"));
+                        let min_y = parseInt(read_object.getAttribute("min_y"));
+                        new_object = new Landmark(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y);
                         break;
                     case 'object_grid':
                         let rows = parseInt(read_object.getAttribute("rows"));

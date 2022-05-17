@@ -102,6 +102,6 @@ export class Grid extends AnimatedObject {
     }
 
     clone () {
-        return new Grid(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._state, this._layer, this._visible, this._opacity, this._angle, this._rows, this._columns, this._row_height, this._column_width);
+        return new Grid(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._lines, this._columns, this._row_height, this._column_width);
     }
 }

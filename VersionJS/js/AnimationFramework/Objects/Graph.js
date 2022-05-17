@@ -114,8 +114,8 @@ export class Graph extends Landmark {
 	}
 
 	clone () {
-		return new Graph(this.id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency,
-			this.state, this._layer, this._visible, this._opacity, this._angle, this._width, this._height, this._scale_x, this.scale_y, this._unit_x, this._unit_y,
+		return new Graph(this.id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size,
+			this._state, this._layer, this._visible, this._opacity, this._angle, this._height, this._width, this._scale_x, this.scale_y, this._unit_x, this._unit_y,
 			this._algorithmic_function, this._max_x, this._max_y, this._draw_point, this._min_x, this._min_y);
 	}
 
