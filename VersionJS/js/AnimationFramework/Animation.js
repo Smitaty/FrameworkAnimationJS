@@ -241,8 +241,8 @@ export class Animation {
                         padding = read_object.hasAttribute("padding") ? parseIntArray(read_object.getAttribute("padding")) : [];
                         width = read_object.hasAttribute("width") ? parseInt(read_object.getAttribute("width")) : undefined;
                         height = read_object.hasAttribute("height") ? parseInt(read_object.getAttribute("height")) : undefined;
-                        halignment = read_object.hasAttribute("halignment") ? read_object.getAttribute("halignment") : "left";
-                        valignment = read_object.hasAttribute("valignment") ? read_object.getAttribute("valignment") : "top";
+                        halignment = read_object.hasAttribute("halignment") ? read_object.getAttribute("halignment") : "center";
+                        valignment = read_object.hasAttribute("valignment") ? read_object.getAttribute("valignment") : "center";
                         round = read_object.hasAttribute("round") ? parseIntArray(read_object.getAttribute("round")) : [0, 0, 0, 0];
                         new_object = new Text(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, text, font, color, padding, width, height, halignment, valignment, round);
                         break;
