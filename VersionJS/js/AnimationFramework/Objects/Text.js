@@ -215,7 +215,6 @@ export class Text extends AnimatedObject {
 		super.draw(drawing);
 
 		drawing.push();
-
 		drawing.textFont(this._font[0]);
 		drawing.textSize(parseInt(this._font[1]));
 		drawing.textStyle(this._font[2] == "bold" ? drawing.BOLD : this._font[2] == "italic" ? drawing.ITALIC : drawing.NORMAL);
@@ -229,6 +228,8 @@ export class Text extends AnimatedObject {
 		// Compute real_width and real_height
 		this.computeRealDimension(drawing);
 
+		drawing.rect(this._x, this._y, this._real_width, this._real_height);
+		
 		// Background
 		drawing.rect(this._x, this._y, this._real_width, this._real_height, this.round[0], this.round[1], this.round[2], this.round[3]);
 
@@ -253,7 +254,7 @@ export class Text extends AnimatedObject {
 
 		// Text's color, font, size and style
 		drawing.noStroke();
-		drawing.fill(this._color[0], this._color[1], this._color[2], this._opacity * 255);
+		drawing.fill(this._color[0], this._color[1], this._color[2], this._opacity);
 
 		// Display
 		drawing.text(this._text.replaceAll('@', '\n'), x, y, this._real_width, this._real_height);

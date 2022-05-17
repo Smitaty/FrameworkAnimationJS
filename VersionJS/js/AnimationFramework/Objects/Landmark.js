@@ -129,7 +129,7 @@ export class Landmark extends AnimatedObject {
 
 	drawAxis (drawing) {
 		if (!this._border_transparency) {
-			drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity * 255);
+			drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity);
 		}
 
 		// Origin x coordinate
@@ -151,7 +151,7 @@ export class Landmark extends AnimatedObject {
 
 	drawScale (drawing) {
 		if (!this._border_transparency) {
-			drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity * 255);
+			drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity);
 		}
 
 		drawing.push();
@@ -204,7 +204,7 @@ export class Landmark extends AnimatedObject {
 		drawing.translate(this._x, this._y);
 
 		if (!this._background_transparent)
-			drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity * 255);
+			drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity);
 		else
 			drawing.noFill();
 
@@ -230,7 +230,7 @@ export class Landmark extends AnimatedObject {
 	drawXUnit (drawing) {
 		drawing.push();
 		drawing.translate(this._x, this._y);
-		drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity * 255);
+		drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity);
 
 		let py;
 		if (this._height < 0) {

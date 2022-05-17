@@ -210,7 +210,7 @@ export class Table extends AnimatedObject {
         // Draw header backround column
         if (this._has_header_columns) {
             drawing.push();
-            drawing.fill(this._header_background_color[0], this._header_background_color[1], this._header_background_color[2], this._opacity * 255);
+            drawing.fill(this._header_background_color[0], this._header_background_color[1], this._header_background_color[2], this._opacity);
             drawing.rect(this._x, this._y, total_width, this._header_column_height);
             drawing.pop();
         }
@@ -218,7 +218,7 @@ export class Table extends AnimatedObject {
         // Draw header backround rows
         if (this._has_header_rows) {
             drawing.push();
-            drawing.fill(this._header_background_color[0], this._header_background_color[1], this._header_background_color[2], this._opacity * 255);
+            drawing.fill(this._header_background_color[0], this._header_background_color[1], this._header_background_color[2], this._opacity);
             drawing.rect(this._x, this._y, this._header_row_width, total_height);
             drawing.pop();
         }
@@ -283,7 +283,7 @@ export class Table extends AnimatedObject {
         }
 
         // Appli text attributes
-        drawing.fill(this._color[0], this._color[1], this._color[2], this._opacity * 255);
+        drawing.fill(this._color[0], this._color[1], this._color[2], this._opacity);
         drawing.textFont(this._font[0]);
         drawing.textSize(parseInt(this._font[1]));
         drawing.textStyle(this._font[2] == "bold" ? drawing.BOLD : this._font[2] == "italic" ? drawing.ITALIC : drawing.NORMAL);
@@ -301,7 +301,7 @@ export class Table extends AnimatedObject {
                 if ((this._has_header_columns && index_value[0] == 0) || (this._has_header_rows && index_value[1] == 0)) {
                     drawing.push();
                     if (this._header_color != null) {
-                        drawing.fill(this._header_color[0], this._header_color[1], this._header_color[2], this._opacity * 255);
+                        drawing.fill(this._header_color[0], this._header_color[1], this._header_color[2], this._opacity);
                     }
                     if (this._header_font != null) {
                         drawing.textFont(this._header_font[0]);

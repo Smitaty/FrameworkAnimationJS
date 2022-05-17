@@ -218,7 +218,7 @@ export class Animation {
                 this.layers.add(layer);
 
                 let visible = read_object.hasAttribute("visible") ? read_object.getAttribute("visible") == "true" || read_object.getAttribute("visible") == "1" : false;
-                let opacity = parseFloat(read_object.getAttribute("opacity")) | 1;
+                let opacity = read_object.hasAttribute("opacity") ? parseInt(read_object.getAttribute("opacity")) : 255;
                 let angle = parseFloat(read_object.getAttribute("angle")) | 0;
 
                 let width;

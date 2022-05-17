@@ -89,6 +89,7 @@ function import_xml (input_id) {
 				document.getElementById("myBackground").value = animation.getBackground().trim();
 				sketch.load_background();
 			}
+
 			// Remove all current objects
 			let number_object = document.getElementById("objects").childElementCount;
 			for (let i = 0; i < number_object; ++i) {
@@ -99,11 +100,15 @@ function import_xml (input_id) {
 			for (let obj of animation.getObjects().values()) {
 				let fake_button = document.createElement("button");
 				fake_button.innerHTML = obj.constructor.name;
+
 				let new_obj_id = new_object(fake_button.innerHTML);
 				document.getElementById(new_obj_id).getElementsByTagName("id")[0].innerHTML = "<b>Identifier :</b> " + obj.id;
+
 				for (let prop of obj.toXml().attributes) {
+
 					// Change the value of this property
 					new SetProperty(null, objects_array[new_obj_id], prop.name, prop.value).execute();
+
 					// Display the value of this property
 					// Try to retrieve the DOM of this property
 					let property_dom = objects_list.lastChild.getElementsByClassName(prop.name)[0];
@@ -112,7 +117,7 @@ function import_xml (input_id) {
 						// Otherwise, this is a select option
 						let property_input = property_dom.getElementsByTagName("input")[0];
 						if (property_input) {
-							if (property_input.type == "range") property_input.value = parseInt(prop.value) * 100;
+							if (property_input.type == "range") property_input.value = parseInt(prop.value);
 							else property_input.value = prop.value;
 						} else {
 							let i = 0;
@@ -197,7 +202,7 @@ function new_object (object_type) {
 	let state = DEFAULT_STATE;
 	let layer = 0;
 	let visible = true;
-	let opacity = 1;
+	let opacity = 255;
 	let angle = 0;
 	let width = 50;
 	let height = 50;
@@ -357,8 +362,9 @@ function new_object (object_type) {
 	input = document.createElement("input");
 	input.type = "range";
 	input.min = "0";
-	input.max = "100";
-	input.value = "100";
+	input.max = "255";
+	input.step = "1";
+	input.value = "255";
 	input.onchange = function () { change_property(obj_id, this); };
 	property.appendChild(input);
 	article1.appendChild(property);
@@ -1525,7 +1531,6 @@ function remove (object_id) {
  * Download the xml file and show the content
  */
 function export_xml () {
-	console.log("--------------------------------\n");
 
 	let docType = document.implementation.createDocumentType('animation', '', 'animation.dtd');
 	let doc = document.implementation.createDocument("", "", docType);
@@ -1627,7 +1632,6 @@ function isRgbColor (strColor) {
 
 function draw_animation () {
 
-
 	sketch = new p5(function (draw_ref) {
 
 		let background_img = null;
@@ -1650,6 +1654,8 @@ function draw_animation () {
 			canvas = draw_ref.createCanvas(parseInt(document.getElementById("width").value), parseInt(document.getElementById("height").value));
 			canvas.parent(drawing_dom);
 
+			draw_ref.frameRate(1);
+
 			update_section_size();
 		};
 
@@ -1669,7 +1675,7 @@ function draw_animation () {
 			// Display objects of each layer, if they're set as visible
 			for (let layer of layers) {
 				for (let object of objects_array) {
-					if (object.layer == layer && object.visible) {
+					if (object.layer === layer && object.visible) {
 						object.draw(draw_ref);
 					}
 				}
@@ -1690,7 +1696,7 @@ function draw_animation () {
 				}
 			}
 			else {
-				background_img = [255,255,255];
+				background_img = [255, 255, 255];
 			}
 		};
 

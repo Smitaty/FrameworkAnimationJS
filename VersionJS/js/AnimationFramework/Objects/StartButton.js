@@ -66,7 +66,7 @@ export class StartButton extends AnimatedObject {
     }
 
     constructor (x, y, text, present) {
-        super(null, x, y, [255, 255, 255], false, [0, 0, 0], false, 1, DEFAULT_STATE, null, true, 1, 0);
+        super(null, x, y, [255, 255, 255], false, [0, 0, 0], false, 1, DEFAULT_STATE, null, true, 255, 0);
         this._text = text;
         this._present = present;
 
@@ -82,7 +82,7 @@ export class StartButton extends AnimatedObject {
         drawing.rect(this._x - this._width / 2 + 2, this._y - this._height / 2 + 2, this._width, this._height);
         // Text's color, size and style
         drawing.noStroke();
-        drawing.fill(0, 0, 255, this._opacity * 255);
+        drawing.fill(0, 0, 255, this._opacity);
         drawing.textSize(this._font_size);
         drawing.textStyle(drawing.NORMAL);
         // Text alignment
