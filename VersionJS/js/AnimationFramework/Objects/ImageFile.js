@@ -1,80 +1,112 @@
+import { ANIMATION_PATH } from "../animation_controller.js";
+import { AnimatedObject } from "./AnimatedObject.js";
 /**
  * 
  */
 
-class ImageFile extends AnimatedObject {
-    
-    constructor(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle, width, height, image_path) {
-        super(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle);
-        this.width = width;
-        this.height = height;
-        this.image_path = image_path;
-        this.loaded_image;
+export class ImageFile extends AnimatedObject {
+
+    /**
+     * The image's width
+     * @type number
+     */
+    _width;
+    get width () {
+        return this._width;
+    }
+    set width (value) {
+        this._width = value;
     }
 
-    getWidth() {
-        return this.width;
+    /**
+     * The images's height
+     * @type number
+     */
+    _height;
+    get height () {
+        return this._height;
+    }
+    set height (value) {
+        this._height = value;
     }
 
-    getHeight() {
-        return this.height;
+    /**
+     * The image's path
+     * @type string
+     */
+    _image_path;
+    get image_path () {
+        return this._image_path;
+    }
+    set image_path (value) {
+        this._image_path = value;
     }
 
-    getImagePath() {
-        return this.image_path;
+    /**
+     * The image loaded by p5
+     * @type P5.Image
+     */
+    _loaded_image;
+    get loaded_image () {
+        return this._loaded_image;
+    }
+    set loaded_image (value) {
+        this._loaded_image = value;
     }
 
-    setImagePath(image_path) {
-        this.image_path = image_path;
+    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, image_path) {
+        super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+        this._width = width;
+        this._height = height;
+        this._image_path = image_path;
+        this._loaded_image;
+        this._first = true;
     }
 
-    setWidth(width) {
-        this.width = width;
+    loadImage (drawing) {
+        this._loaded_image = drawing.loadImage(this._image_path);
     }
 
-    setHeight(height) {
-        this.height = height;
-    }
-
-    loadImage(drawing) {
-        this.loaded_image = drawing.loadImage(this.image_path);
-    }
-
-    draw(drawing) {
+    draw (drawing) {
+        drawing.push();
         super.draw(drawing);
-        if (this.width == undefined || this.height == undefined) {
-            drawing.image(this.loaded_image, this.x, this.y);
-        } else {
-            drawing.image(this.loaded_image, this.x, this.y, this.width, this.height);
+        if(this._first){
+            this.loadImage(drawing);
+            this._first = false;
         }
+        if (this._width == undefined || this._height == undefined) {
+            drawing.image(this._loaded_image, this._x, this._y);
+        } else {
+            drawing.image(this._loaded_image, this._x, this._y, this._width, this._height);
+        }
+        drawing.pop();
     }
 
-    isClicked(x, y) {
-		return (x >= this.x) && (x <= this.x + this.width) && (y >= this.y) && (y <= this.y + this.height);
+    isClicked (x, y, drawing) {
+        return (x >= this._x) && (x <= this._x + this._width) && (y >= this._y) && (y <= this._y + this._height);
     }
-    
-    toXml() {
-        var image = document.createElement("object_image");
-        image.innerHTML = this.id;
-        image.setAttribute("x", this.x);
-        image.setAttribute("y",this.y);
-        image.setAttribute("bgcolor", this.bgcolor); // r, g, b
-        image.setAttribute("bgtransparent", this.bgtransparent);
-        image.setAttribute("bocolor", this.bocolor); // r, g, b
-        image.setAttribute("botransparent", this.botransparent);
-        image.setAttribute("bosize", this.bosize);
-        image.setAttribute("layer", this.layer);
-        image.setAttribute("visible", this.visible);
-        image.setAttribute("opacity", this.opacity);
+
+    toXml () {
+        let image = document.createElement("object_image");
+        image.innerHTML = this._id;
+        image.setAttribute("x", this._x);
+        image.setAttribute("y", this._y);
+        image.setAttribute("background_color", this._background_color); // r, g, b
+        image.setAttribute("background_transparent", this._background_transparent);
+        image.setAttribute("border_color", this._border_color); // r, g, b
+        image.setAttribute("border_transparency", this._border_transparency);
+        image.setAttribute("border_size", this._border_size);
+        image.setAttribute("layer", this._layer);
+        image.setAttribute("visible", this._visible);
+        image.setAttribute("opacity", this._opacity);
         // image.setAttribute("angle", this.angle); // degrees
-        image.setAttribute("width", this.width);
-        image.setAttribute("height", this.height);
-        image.setAttribute("image", this.image_path);
+        image.setAttribute("width", this._width);
+        image.setAttribute("height", this._height);
+        image.setAttribute("image", this._image_path);
         return image;
     }
 
-    clone() {
-        return new ImageFile(this.id, this.x, this.y, this.bgcolor, this.bgtransparent, this.bocolor, this.botransparent, this.state, this.layer, this.visible, this.opacity, this.angle, this.width, this.height, this.image_path);
+    clone () {
+        return new ImageFile(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._width, this._height, this._image_path);
     }
-
 }

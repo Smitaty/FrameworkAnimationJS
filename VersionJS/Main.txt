@@ -16,11 +16,11 @@ trajectoire (type, et en fonction du type : points si c'est une multiligne, widt
 Fonctionnalités
 ===============
 
-Un fichier XML contient la description d'un dessin ainsi qu'un programme défini par des actions correspondantes à des animations des objets du dessin
+Un fichier XML contient des objets et des programmes. Les objets sont des formes du dessin et les programmes sont des animations appliquées à ces objets.
 
-Les objets n'ont pas de coordonnées au début. C'est le programme qui donne les coordonnées de chaque objet. Une instruction du programme est explicitement assignée à un objet.
+Un programme est explicitement assigné à un objet.
 
-Actions possibles dans le programme :
+Actions possibles d'un programme :
 - Déplacer un élément, le rendre visible, le faire attendre, clignoter, déclencher un objet avec <click/> et trigger
 - Changer les autres valeurs d'un attribut d'un élément (couleur, texte, position) avec l'objet XML <setproperty object="" property="" value="" />
 
@@ -43,11 +43,17 @@ XML : les programmes (associés à un objet du dessin) sont à exécuter en para
 
 Point d'ancrage des objets de dessin fournis par P5.js :
 - canevas		en haut à gauche
+- arrow			en haut à gauche de la ligne
+- circle 		centre de l'objet
 - ellipse		centre de l'objet
-- arc			centre de l'objet
+- graph			au niveau de l'origine (point 0,0)
+- grid			en haut à gauche
+- imageFile		en haut à gauche
+- landmark		au niveau de l'origine
+- polygon		au niveau du premier point dessinés
 - rect			en haut à gauche de l'objet
+- table			en haut à gauche
 - text			en haut à gauche de la ligne de base de l'objet
-Les coordonnées données dans le XML (attributs x et y) correspondent au point en bas à gauche de la boîte rectangulaire entourant l'objet.
 
 Conventions
 ===========
@@ -81,7 +87,9 @@ Les feuilles de style sont désormais dans le dossier css : <link rel="styleshee
 
 Ajout règles dans le fichier css/css.css.
 
-Le chemin du background donné dans le XML est relatif au fichier XML (ou absolu).
+Le background peut être défini comme une couleur ou une image.
+Dans le cas d'une couleur, on peut utiliser le nom de la couleur (ex : "red"), le code hexa (ex : " #e41e1e") ou le code rgb (ex : "228, 30, 30").
+Dans le cas d'une image, le chemin de l'image donné dans le XML est relatif au fichier HTML (ou absolu).
 
 p5.js : Passage en *instanciation-case* -> il faut dessiner les objets sur un dessin, et non plus directement dans le default canvas.
 
@@ -97,6 +105,6 @@ Il faut donc un tableau de figures.
 Les programmes de chaque objet de dessin sont à exécuter en parallèle, mais leurs instructions sont séquentielles.
 Il faut donc un tableau de programmes.
 
-Ainsi, nous avons une classe par objet et par intruction, comme la version orginale codée en Java.
+Ainsi, nous avons une classe par objet et par intruction, comme la version originale codée en Java.
 Un programme principal lit un XML donné et met les objets du dessin dans un tableau associatif (identifiant : Object), ainsi que les programmes dans un tableau associatif (identifiant : Program).
 Les objets sont capable de se dessiner (en une méthode qui sera appelée par le programme principal), en appelant les fonctions de dessin de p5.js.

@@ -1,8 +1,8 @@
 /**
  * Set the object as waiting for a given token, triggerable by the Trigger instruction
  */
-
-class Wait extends Instruction {
+import { Instruction } from "./Instruction.js";
+export class Wait extends Instruction {
 	
 	constructor(object, state) {
 		super(object);
@@ -16,7 +16,7 @@ class Wait extends Instruction {
 		} else {
 			this.object.setState(this.expected_state);
 		}*/
-		this.object.setState(this.expected_state);
+		this.object.state = (this.expected_state);
 	}
 	
 }

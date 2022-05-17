@@ -1,8 +1,8 @@
 /**
  * This instruction changes the state of the object to the value gave by the indtruction
  */
-
-class State extends Instruction {
+import { Instruction } from "./Instruction.js";
+export class State extends Instruction {
 
 	constructor(object, value) {
 		super(object);
@@ -10,7 +10,7 @@ class State extends Instruction {
 	}
 	
 	execute() {
-		this.object.setState(this.value);
+		this.object.state = (this.value);
 	}
 
 }

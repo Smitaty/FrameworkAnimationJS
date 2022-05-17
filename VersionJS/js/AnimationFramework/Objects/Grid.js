@@ -1,87 +1,107 @@
+import { AnimatedObject } from "./AnimatedObject.js";
 /**
  * 
  */
 
-class Grid extends AnimatedObject {
-    
-    constructor(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle, lines, columns, line_height, column_width) {
-        super(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle);
-        this.lines = lines;
-        this.columns = columns;
-        this.line_height = line_height;
-        this.column_width = column_width;
+export class Grid extends AnimatedObject {
+
+    /**
+     * The number of rows
+     * @type number
+     */
+    _rows;
+    get rows () {
+        return this._rows;
+    }
+  
+    set rows (value) {
+        this._rows = value;
     }
 
-    getLines() {
-        return this.lines;
+    /**
+     * The number of columns
+     * @type number
+     */
+    _columns;
+    get columns () {
+        return this._columns;
+    }
+    set columns (value) {
+        this._columns = value;
     }
 
-    getLine_height() {
-        return this.line_height;
+    /**
+     * The line height
+     * @type number
+     */
+    _row_height;
+    get row_height () {
+        return this._row_height;
+    }
+  
+    set row_height (value) {
+        this._row_height = value;
     }
 
-    getColumns() {
-        return this.columns;
+    /** 
+     * The column width
+     * @type number
+     */
+    _column_width;
+    get column_width () {
+        return this._column_width;
+    }
+    set column_width (value) {
+        this._column_width = value;
     }
 
-    getColumn_width() {
-        return this.column_width;
+    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, rows, columns, row_height, column_width) {
+        super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+        this._rows = rows;
+        this._columns = columns;
+        this._row_height = row_height;
+        this._column_width = column_width;
     }
 
-    setLines(lines) {
-        this.lines = lines;
-    }
-
-    setLine_height(line_height) {
-        return this.line_height = line_height;
-    }
-
-    setColumns(columns) {
-        this.columns = columns;
-    }
-
-    setColumn_width(column_width) {
-        this.column_width = column_width;
-    }
-
-    draw(drawing) {
+    draw (drawing) {
+      drawing.push();
         super.draw(drawing);
-        drawing.rect(this.x, this.y, this.column_width * this.columns, this.line_height * this.lines);
-        for (var i = 1; i < this.lines; ++i) {
-            drawing.line(this.x, this.y + i * this.line_height, this.x + this.column_width * this.columns, this.y + i * this.line_height);
+        drawing.rect(this._x, this._y, this._column_width * this._columns, this._row_height * this._rows);
+        for (let i = 1; i < this._rows; ++i) {
+            drawing.line(this._x, this._y + i * this._row_height, this._x + this._column_width * this._columns, this._y + i * this._row_height);
         }
-        for (var i = 1; i < this.columns; ++i) {
-            drawing.line(this.x + i * this.column_width, this.y, this.x + i * this.column_width, this.y + this.line_height * this.lines);
+        for (let i = 1; i < this._columns; ++i) {
+            drawing.line(this._x + i * this._column_width, this._y, this._x + i * this._column_width, this._y + this._row_height * this._rows);
         }
+        drawing.pop();
     }
 
-    isClicked(x, y) {
-        return (x >= this.x) && (x <= this.columns * this.column_width) && (y >= this.y) && (y <= this.lines * this.line_height);
+    isClicked (x, y, drawing) {
+        return (x >= this._x) && (x <= this._columns * this._column_width) && (y >= this._y) && (y <= this._rows * this._row_height);
     }
 
-    toXml() {
-        var grid = document.createElement("object_grid");
-        grid.innerHTML = this.id;
-        grid.setAttribute("x", this.x);
-        grid.setAttribute("y",this.y);
-        grid.setAttribute("bgcolor", this.bgcolor); // r, g, b
-        grid.setAttribute("bgtransparent", this.bgtransparent);
-        grid.setAttribute("bocolor", this.bocolor); // r, g, b
-        grid.setAttribute("botransparent", this.botransparent);
-        grid.setAttribute("bosize", this.bosize);
-        grid.setAttribute("layer", this.layer);
-        grid.setAttribute("visible", this.visible);
-        grid.setAttribute("opacity", this.opacity);
-        // grid.setAttribute("angle", this.angle); // degrees
-        grid.setAttribute("lines", this.lines);
-        grid.setAttribute("columns", this.columns);
-        grid.setAttribute("line_height", this.line_height);
-        grid.setAttribute("column_width", this.column_width);
+    toXml () {
+        let grid = document.createElement("object_grid");
+        grid.innerHTML = this._id;
+        grid.setAttribute("x", this._x);
+        grid.setAttribute("y", this._y);
+        grid.setAttribute("background_color", this._background_color); // r, g, b
+        grid.setAttribute("background_transparent", this._background_transparent);
+        grid.setAttribute("border_color", this._border_color); // r, g, b
+        grid.setAttribute("border_transparency", this._border_transparency);
+        grid.setAttribute("border_size", this._border_size);
+        grid.setAttribute("layer", this._layer);
+        grid.setAttribute("visible", this._visible);
+        grid.setAttribute("opacity", this._opacity);
+        // grid.setAttribute("angle", this._angle); // degrees
+        grid.setAttribute("rows", this._rows);
+        grid.setAttribute("columns", this._columns);
+        grid.setAttribute("row_height", this._row_height);
+        grid.setAttribute("column_width", this._column_width);
         return grid;
     }
 
-    clone() {
-        return new Grid(this.id, this.x, this.y, this.bgcolor, this.bgtransparent, this.bocolor, this.botransparent, this.state, this.layer, this.visible, this.opacity, this.angle, this.lines, this.columns, this.line_height, this.column_width);
+    clone () {
+        return new Grid(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._lines, this._columns, this._row_height, this._column_width);
     }
-
 }
