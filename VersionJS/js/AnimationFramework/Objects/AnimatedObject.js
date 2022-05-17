@@ -159,12 +159,12 @@ export class AnimatedObject {
 
     draw (drawing) {
         // Fill
-        if (this.background_transparent) drawing.fill(0, 0);
-        else drawing.fill(this.background_color[0], this.background_color[1], this.background_color[2], this.opacity * 255); // fill([r, g, b], opacity) doesn't work :)
+        if (this._background_transparent) drawing.fill(0, 0);
+        else drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity); // fill([r, g, b], opacity) doesn't work :)
         // Border
-        if (this.border_transparency) drawing.noStroke();
-        else drawing.stroke(this.border_color[0], this.border_color[1], this.border_color[2], this.opacity * 255);
-        drawing.strokeWeight(this.border_size);
+        if (this._border_transparency) drawing.noStroke();
+        else drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity);
+        drawing.strokeWeight(this._border_size);
     }
 
     get angle () {

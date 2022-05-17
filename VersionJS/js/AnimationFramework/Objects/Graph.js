@@ -36,7 +36,7 @@ export class Graph extends Landmark {
 
 		// Drawing of function
 		if (!this._border_transparency)
-			drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity * 255);
+			drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity);
 		else
 			drawing.noStroke();
 

@@ -44,7 +44,7 @@ export class SetProperty extends Instruction {
 				this.target.visible = this.value == "true" ? true : false;
 				break;
 			case "opacity":
-				this.target.opacity = parseInt(this.value) / 100.0;
+				this.target.opacity = parseInt(this.value) ?? 255;
 				break;
 			case "angle":
 				this.target.angle = parseInt(this.value) | 0;
