@@ -88,6 +88,7 @@
             halignment="center"
             valignment="center"
             has_header_rows="true"
+            header_row_width="60"
             header_background_color="243,156,18"
             header_color="0,0,0"
             values="src 2 | 1ère adresse dans l'expression | 2ème adresse dans l'expression | 3ème adresse dans l'expression | 4ème adresse dans l'expression">src2</object_table>
@@ -185,8 +186,8 @@
             color="0,0,0">expression_ordre</object_text>
 
         <object_rectangle
-            x="450"
-            y="305"
+            x="455"
+            y="307"
             border_color="255,0,0"
             border_transparency="0"
             border_size="2"
@@ -205,7 +206,7 @@
             color="0,0,0">calcul_00</object_text>
         
         <object_text
-            x="311"
+            x="310"
             y="313"
             text="-2"
             font="Arial,15,normal"
@@ -213,8 +214,8 @@
             color="0,0,0">-2</object_text>
 
         <object_rectangle
-            x="483"
-            y="305"
+            x="490"
+            y="307"
             border_color="255,0,0"
             border_transparency="0"
             border_size="2"
@@ -241,8 +242,8 @@
             color="0,0,0">7</object_text>
 
         <object_rectangle
-            x="518"
-            y="305"
+            x="525"
+            y="307"
             border_color="255,0,0"
             border_transparency="0"
             border_size="2"
@@ -269,8 +270,8 @@
             color="0,0,0">3</object_text>
 
         <object_rectangle
-            x="551"
-            y="305"
+            x="558"
+            y="307"
             border_color="255,0,0"
             border_transparency="0"
             border_size="2"
@@ -302,7 +303,7 @@
         <program assigned_to="00">
 			<visible value="true" />
             <trigger object="calcul_00" value="appear" />
-            <sleep value="2000" />
+            <sleep value="2500" />
             <visible value="false" />
 		</program>
 
@@ -318,7 +319,7 @@
         <program assigned_to="-2">
             <wait value="start" />
             <visible value="true" />
-            <moveto x="132" y="405" dx="1" dy="1" />
+            <moveto x="125" y="405" dx="1" dy="1" />
             <trigger object="01" value="appear" />
         </program>
 
@@ -326,7 +327,7 @@
             <wait value="appear" />
 			<visible value="true" />
             <trigger object="calcul_01" value="appear" />
-            <sleep value="2000" />
+            <sleep value="2500" />
             <visible value="false" />
 		</program>
 
@@ -342,7 +343,7 @@
         <program assigned_to="7">
             <wait value="start" />
             <visible value="true" />
-            <moveto x="195" y="405" dx="1" dy="1" />
+            <moveto x="190" y="405" dx="1" dy="1" />
             <trigger object="10" value="appear" />
         </program>
 
@@ -350,7 +351,7 @@
             <wait value="appear" />
 			<visible value="true" />
             <trigger object="calcul_10" value="appear" />
-            <sleep value="2000" />
+            <sleep value="2500" />
             <visible value="false" />
 		</program>
 
@@ -366,7 +367,7 @@
         <program assigned_to="3">
             <wait value="start" />
             <visible value="true" />
-            <moveto x="256" y="405" dx="1" dy="1" />
+            <moveto x="250" y="405" dx="1" dy="1" />
             <trigger object="11" value="appear" />
         </program>
 
@@ -374,7 +375,7 @@
             <wait value="appear" />
 			<visible value="true" />
             <trigger object="calcul_11" value="appear" />
-            <sleep value="2000" />
+            <sleep value="2500" />
             <visible value="false" />
 		</program>
 
@@ -390,7 +391,7 @@
         <program assigned_to="-1">
             <wait value="start" />
             <visible value="true" />
-            <moveto x="313" y="405" dx="1" dy="1" />
+            <moveto x="303" y="405" dx="1" dy="1" />
         </program>
     </programs>
 
