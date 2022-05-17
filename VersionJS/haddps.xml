@@ -106,7 +106,6 @@
 				halignment="center"
 				valignment="center"
 				has_header_rows="true"
-				header_row_width="90"
 				header_background_color="19,141,117"
 				header_color="0,0,0"
 				values="src 1 | 4 | 3 | 2 | 1">ex_src1</object_table>
