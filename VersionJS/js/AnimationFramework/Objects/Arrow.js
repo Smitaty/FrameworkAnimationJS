@@ -11,8 +11,8 @@ export class Arrow extends AnimatedObject {
     _height_triangle;
     _rotation;
 
-    constructor(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width_line, height_line, width_triangle, height_triangle, rotation){
-        super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+    constructor(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width_line, height_line, width_triangle, height_triangle, rotation){
+        super(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
         this._width_line = width_line;
         this._height_line = height_line;
         this._width_triangle = width_triangle;
@@ -84,7 +84,7 @@ export class Arrow extends AnimatedObject {
         arrow.setAttribute("x", this.x);
         arrow.setAttribute("y",this.y);
         arrow.setAttribute("background_color", this.background_color); 
-        arrow.setAttribute("background_transparent", this.background_transparent);
+        arrow.setAttribute("background_transparency", this.background_transparency);
         arrow.setAttribute("border_color", this.border_color); 
         arrow.setAttribute("border_transparency", this.border_transparency);
         arrow.setAttribute("border_size", this.border_size);
@@ -101,6 +101,6 @@ export class Arrow extends AnimatedObject {
     }
 
     clone() {
-        return new Arrow(this.id, this.x, this.y, this.background_color, this.background_transparent, this.border_color, this.border_transparency, this._border_size, this.state, this.layer, this.visible, this.opacity, this.angle, this._width_line, this._height_line, this._width_triangle, this._height_triangle, this._rotation);
+        return new Arrow(this.id, this.x, this.y, this.background_color, this.background_transparency, this.border_color, this.border_transparency, this._border_size, this.state, this.layer, this.visible, this.opacity, this.angle, this._width_line, this._height_line, this._width_triangle, this._height_triangle, this._rotation);
     }
 }

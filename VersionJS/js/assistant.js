@@ -195,7 +195,7 @@ function new_object (object_type) {
 	let x = 0;
 	let y = 0;
 	let background_color = [0, 0, 0]; // r, g, b
-	let background_transparent = true;
+	let background_transparency = true;
 	let border_color = [0, 0, 0]; // r, g, b
 	let border_transparency = false;
 	let border_size = 1;
@@ -250,11 +250,11 @@ function new_object (object_type) {
 	property.appendChild(input);
 	article1.appendChild(property);
 
-	// background_transparent
+	// background_transparency
 	property = document.createElement("property");
-	property.className = "background_transparent";
+	property.className = "background_transparency";
 	label = document.createElement("label");
-	label.innerHTML = "background_transparent";
+	label.innerHTML = "background_transparency";
 	property.appendChild(label);
 	input = document.createElement("select");
 	input.onchange = function () { change_property(obj_id, this); };
@@ -543,7 +543,7 @@ function new_object (object_type) {
 			input.appendChild(option);
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Text(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, "", font, color, padding, width, height, halignment, valignment, round_text);
+			object = new Text(obj_id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, "", font, color, padding, width, height, halignment, valignment, round_text);
 			break;
 		case "ImageFile":
 			// width
@@ -587,7 +587,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new ImageFile(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, image);
+			object = new ImageFile(obj_id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, image);
 			objects_image_id.push(obj_id);
 			break;
 		case "Rectangle":
@@ -632,7 +632,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Rectangle(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, round);
+			object = new Rectangle(obj_id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, round);
 			break;
 		case "Polygon":
 			// coord_x
@@ -663,7 +663,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Polygon(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, coord_x, coord_y);
+			object = new Polygon(obj_id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, coord_x, coord_y);
 			break;
 		case "Circle":
 			// radius
@@ -680,7 +680,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Circle(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, radius, radius);
+			object = new Circle(obj_id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, radius, radius);
 			break;
 		case "Ellipse":
 			// width
@@ -711,7 +711,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Ellipse(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height);
+			object = new Ellipse(obj_id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height);
 			break;
 		case "Landmark":
 			// We set x-y at 60-60 at default to see it well in preview
@@ -852,7 +852,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Landmark(obj_id, 30, 110, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y);
+			object = new Landmark(obj_id, 30, 110, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y);
 			break;
 		case "Grid":
 			// rows
@@ -907,7 +907,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Grid(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, rows, columns, row_height, column_width);
+			object = new Grid(obj_id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, rows, columns, row_height, column_width);
 			break;
 		case "Table":
 			// values
@@ -1144,7 +1144,7 @@ function new_object (object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			// Create table object
-			object = new Table(obj_id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer,
+			object = new Table(obj_id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer,
 				visible, opacity, angle, values, parseInt(tab_row_height), parseInt(tab_column_width), text_font, text_color, tab_padding, text_halignment, text_valignment,
 				false, false, header_font, header_color, header_background_color, parseInt(header_column_height), parseInt(header_row_width));
 			break;
@@ -1319,7 +1319,7 @@ function new_object (object_type) {
 			property.appendChild(input);
 			article1.appendChild(property);
 			property = document.createElement("property");
-			object = new Graph(obj_id, 60, 60, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, graph_scale_x, graph_scale_y, graph_unit_x, graph_unit_y, algorithmic_function, graph_max_x, graph_max_y, false, graph_min_x, graph_min_y);
+			object = new Graph(obj_id, 60, 60, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, graph_scale_x, graph_scale_y, graph_unit_x, graph_unit_y, algorithmic_function, graph_max_x, graph_max_y, false, graph_min_x, graph_min_y);
 			break;
 		case "Arrow":
 			// width_line
@@ -1387,7 +1387,7 @@ function new_object (object_type) {
 			input.onchange = function () { change_property(obj_id, this); };
 			property.appendChild(input);
 			article1.appendChild(property);
-			object = new Arrow(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width_line, height_line, width_triangle, height_triangle, rotation);
+			object = new Arrow(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width_line, height_line, width_triangle, height_triangle, rotation);
 			break;
 	}
 	objects_array[obj_id] = object;
@@ -1482,8 +1482,8 @@ function customize (object_id) {
 	document.getElementById(object_id).getElementsByClassName("visible")[0].getElementsByTagName("option")[0].selected = "selected";
 
 	// Set the background object as not transparent
-	object.background_transparent = (false);
-	document.getElementById(object_id).getElementsByClassName("background_transparent")[0].getElementsByTagName("option")[1].selected = "selected";
+	object.background_transparency = (false);
+	document.getElementById(object_id).getElementsByClassName("background_transparency")[0].getElementsByTagName("option")[1].selected = "selected";
 
 	// Set the border object as not transparent
 	object.border_transparency = (false);

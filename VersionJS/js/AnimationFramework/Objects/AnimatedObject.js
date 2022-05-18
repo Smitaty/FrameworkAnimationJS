@@ -50,14 +50,14 @@ export class AnimatedObject {
         this._background_color = value;
     }
 
-    /** background_transparent
+    /** background_transparency
      * @type bool */
-    _background_transparent;
-    get background_transparent () {
-        return this._background_transparent;
+    _background_transparency;
+    get background_transparency () {
+        return this._background_transparency;
     }
-    set background_transparent (value) {
-        this._background_transparent = value;
+    set background_transparency (value) {
+        this._background_transparency = value;
     }
 
     /** border_color
@@ -141,12 +141,12 @@ export class AnimatedObject {
     _angle;
 
 
-    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle) {
+    constructor (id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle) {
         this._id = id;
         this._x = x;
         this._y = y;
         this._background_color = background_color; // r, g, b
-        this._background_transparent = background_transparent;
+        this._background_transparency = background_transparency;
         this._border_color = border_color; // r, g, b
         this._border_transparency = border_transparency;
         this._border_size = border_size;
@@ -159,7 +159,7 @@ export class AnimatedObject {
 
     draw (drawing) {
         // Fill
-        if (this._background_transparent) drawing.fill(0, 0);
+        if (this._background_transparency) drawing.fill(0, 0);
         else drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity); // fill([r, g, b], opacity) doesn't work :)
         // Border
         if (this._border_transparency) drawing.noStroke();

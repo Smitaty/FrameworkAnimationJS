@@ -13,7 +13,7 @@
       font="Courier,12,bold"
       color="0,0,0"
       padding="2"
-      background_transparent="true">Message</object_text>
+      background_transparency="true">Message</object_text>
 
     <object_text
       text="i1"
@@ -21,7 +21,7 @@
       background_color="255,127,0"
       color="0,0,0"
       padding="2"
-      background_transparent="false">I1</object_text>
+      background_transparency="false">I1</object_text>
 
     <object_text
       text="i2"
@@ -29,7 +29,7 @@
       background_color="255,127,0"
       color="0,0,0"
       padding="2"
-      background_transparent="false">I2</object_text>
+      background_transparency="false">I2</object_text>
 
     <object_text
       text="i3"
@@ -37,7 +37,7 @@
       background_color="255,127,0"
       color="0,0,0"
       padding="2"
-      background_transparent="false">I3</object_text>
+      background_transparency="false">I3</object_text>
 
     <object_text
       text="i4"
@@ -45,7 +45,7 @@
       background_color="255,127,0"
       color="0,0,0"
       padding="2"
-      background_transparent="false">I4</object_text>
+      background_transparency="false">I4</object_text>
 
     <object_text
       text="j1"
@@ -53,7 +53,7 @@
       background_color="0,102,204"
       color="255,255,255"
       padding="2"
-      background_transparent="false">J1</object_text>
+      background_transparency="false">J1</object_text>
 
     <object_text
       text="j2"
@@ -61,7 +61,7 @@
       background_color="0,102,204"
       color="255,255,255"
       padding="2"
-      background_transparent="false">J2</object_text>
+      background_transparency="false">J2</object_text>
 
     <object_text
       text="j3"
@@ -69,7 +69,7 @@
       background_color="0,102,204"
       color="255,255,255"
       padding="2"
-      background_transparent="false">J3</object_text>
+      background_transparency="false">J3</object_text>
 
     <object_text
       text="j4"
@@ -77,7 +77,7 @@
       background_color="0,102,204"
       color="255,255,255"
       padding="2"
-      background_transparent="false">J4</object_text>
+      background_transparency="false">J4</object_text>
 
   </objects>
 

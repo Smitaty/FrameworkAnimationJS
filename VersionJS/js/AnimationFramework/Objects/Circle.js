@@ -10,8 +10,8 @@ export class Circle extends Ellipse {
      */
     _radius;
 
-    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, radius) {
-        super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, radius * 2, radius * 2);
+    constructor (id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, radius) {
+        super(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, radius * 2, radius * 2);
         this._radius = radius;
     }
 
@@ -35,7 +35,7 @@ export class Circle extends Ellipse {
         circle.setAttribute("x", this._x);
         circle.setAttribute("y", this._y);
         circle.setAttribute("background_color", this._background_color); // r, g, b
-        circle.setAttribute("background_transparent", this._background_transparent);
+        circle.setAttribute("background_transparency", this._background_transparency);
         circle.setAttribute("border_color", this._border_color); // r, g, b
         circle.setAttribute("border_transparency", this._border_transparency);
         circle.setAttribute("border_size", this._border_size);
@@ -48,7 +48,7 @@ export class Circle extends Ellipse {
     }
 
     clone () {
-        return new Circle(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this.angle, this._radius);
+        return new Circle(this._id, this._x, this._y, this._background_color, this._background_transparency, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this.angle, this._radius);
     }
 
     get radius () {

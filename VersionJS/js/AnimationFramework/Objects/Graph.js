@@ -17,10 +17,10 @@ export class Graph extends Landmark {
 	 */
 	_draw_point;
 
-	constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer,
+	constructor (id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer,
 		visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y, algorithmic_function, max_x, max_y, draw_point, min_x, min_y) {
 
-		super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer,
+		super(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer,
 			visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y);
 
 		this._algorithmic_function = algorithmic_function;
@@ -90,7 +90,7 @@ export class Graph extends Landmark {
 		graph.setAttribute("x", this._x);
 		graph.setAttribute("y", this._y);
 		graph.setAttribute("background_color", this._background_color); // r, g, b
-		graph.setAttribute("background_transparent", this._background_transparent);
+		graph.setAttribute("background_transparency", this._background_transparency);
 		graph.setAttribute("border_color", this._border_color); // r, g, b
 		graph.setAttribute("border_transparency", this._border_transparency);
 		graph.setAttribute("border_size", this._border_size);
@@ -114,7 +114,7 @@ export class Graph extends Landmark {
 	}
 
 	clone () {
-		return new Graph(this.id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size,
+		return new Graph(this.id, this._x, this._y, this._background_color, this._background_transparency, this._border_color, this._border_transparency, this._border_size,
 			this._state, this._layer, this._visible, this._opacity, this._angle, this._height, this._width, this._scale_x, this.scale_y, this._unit_x, this._unit_y,
 			this._algorithmic_function, this._max_x, this._max_y, this._draw_point, this._min_x, this._min_y);
 	}

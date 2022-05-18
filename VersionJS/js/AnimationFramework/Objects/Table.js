@@ -149,11 +149,11 @@ export class Table extends AnimatedObject {
 
     _header_row_width;
 
-    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer,
+    constructor (id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer,
         visible, opacity, angle, values, row_height, column_width, font, color, padding, halignment, valignment,
         has_header_columns, has_header_rows, header_font, header_color, header_background_color, header_column_height, header_row_width) {
 
-        super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+        super(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
         this._values = values; // row1col1 | row1col2 | row1col3 $ row2col1 | row2col1
         this._row_height = row_height;
         this._column_width = column_width;
@@ -347,7 +347,7 @@ export class Table extends AnimatedObject {
         table.setAttribute("x", this._x);
         table.setAttribute("y", this._y);
         table.setAttribute("background_color", this._background_color); // r, g, b
-        table.setAttribute("background_transparent", this._background_transparent);
+        table.setAttribute("background_transparency", this._background_transparency);
         table.setAttribute("border_color", this._border_color); // r, g, b
         table.setAttribute("border_transparency", this._border_transparency);
         table.setAttribute("border_size", this._border_size);
@@ -374,7 +374,7 @@ export class Table extends AnimatedObject {
     }
 
     clone () {
-        return new Table(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency,
+        return new Table(this._id, this._x, this._y, this._background_color, this._background_transparency, this._border_color, this._border_transparency,
             this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._values, this._row_height, this._column_width,
             this._font, this._color, this._padding, this._halignment, this._valignment, this._has_header_columns, this._has_header_rows, this._header_font,
             this._header_color, this._header_background_color, this._header_column_height, this._header_row_width);

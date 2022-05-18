@@ -94,9 +94,9 @@ export class Landmark extends AnimatedObject {
 		this._max_y = value;
 	}
 
-	constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size,
+	constructor (id, x, y, background_color, background_transparency, border_color, border_transparency, border_size,
 		state, layer, visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y) {
-		super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+		super(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
 		this._height = height;
 		this._width = width;
 		this._scale_x = scale_x;
@@ -203,7 +203,7 @@ export class Landmark extends AnimatedObject {
 		drawing.push();
 		drawing.translate(this._x, this._y);
 
-		if (!this._background_transparent)
+		if (!this._background_transparency)
 			drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity);
 		else
 			drawing.noFill();
@@ -280,7 +280,7 @@ export class Landmark extends AnimatedObject {
 		landmark.setAttribute("x", this._x);
 		landmark.setAttribute("y", this._y);
 		landmark.setAttribute("background_color", this._background_color); // r, g, b
-		landmark.setAttribute("background_transparent", this._background_transparent);
+		landmark.setAttribute("background_transparency", this._background_transparency);
 		landmark.setAttribute("border_color", this._border_color); // r, g, b
 		landmark.setAttribute("border_transparency", this._border_transparency);
 		landmark.setAttribute("border_size", this._border_size);
@@ -328,6 +328,6 @@ export class Landmark extends AnimatedObject {
 	}
 
 	clone () {
-		return new Landmark(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._width, this._height, this._scale_x, this._scale_y, this._unit_x, this._unit_y, this._max_x, this._max_y, this._min_x, this._min_y);
+		return new Landmark(this._id, this._x, this._y, this._background_color, this._background_transparency, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._width, this._height, this._scale_x, this._scale_y, this._unit_x, this._unit_y, this._max_x, this._max_y, this._min_x, this._min_y);
 	}
 }

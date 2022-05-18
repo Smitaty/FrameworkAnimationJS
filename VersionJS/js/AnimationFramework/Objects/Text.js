@@ -183,8 +183,8 @@ export class Text extends AnimatedObject {
 		this._round = value;
 	}
 
-	constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, text, font, color, padding, width, height, halignment, valignment, round) {
-		super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+	constructor (id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, text, font, color, padding, width, height, halignment, valignment, round) {
+		super(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
 		this._text = text;
 		this._font = font; // FontName, FontSize, FontWeight
 		this._color = color; // r, g, b
@@ -271,7 +271,7 @@ export class Text extends AnimatedObject {
 		text.setAttribute("x", this._x);
 		text.setAttribute("y", this._y);
 		text.setAttribute("background_color", this._background_color); // r, g, b
-		text.setAttribute("background_transparent", this._background_transparent);
+		text.setAttribute("background_transparency", this._background_transparency);
 		text.setAttribute("border_color", this._border_color); // r, g, b
 		text.setAttribute("border_transparency", this._border_transparency);
 		text.setAttribute("border_size", this._border_size);
@@ -292,7 +292,7 @@ export class Text extends AnimatedObject {
 	}
 
 	clone () {
-		return new Text(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._text, this._font, this._color, this._padding, this._width, this._height, this._halignment, this._valignment, this._round);
+		return new Text(this._id, this._x, this._y, this._background_color, this._background_transparency, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._text, this._font, this._color, this._padding, this._width, this._height, this._halignment, this._valignment, this._round);
 	}
 
 	computeRealDimension (drawing) {

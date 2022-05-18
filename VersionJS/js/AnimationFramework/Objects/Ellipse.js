@@ -16,8 +16,8 @@ export class Ellipse extends AnimatedObject {
      */
     _height;
 
-    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height) {
-        super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+    constructor (id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height) {
+        super(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
         this._width = width;
         this._height = height;
     }
@@ -41,7 +41,7 @@ export class Ellipse extends AnimatedObject {
         ellipse.setAttribute("x", this._x);
         ellipse.setAttribute("y", this._y);
         ellipse.setAttribute("background_color", this._background_color); // r, g, b
-        ellipse.setAttribute("background_transparent", this._background_transparent);
+        ellipse.setAttribute("background_transparency", this._background_transparency);
         ellipse.setAttribute("border_color", this._border_color); // r, g, b
         ellipse.setAttribute("border_transparency", this._border_transparency);
         ellipse.setAttribute("border_size", this._border_size);
@@ -55,7 +55,7 @@ export class Ellipse extends AnimatedObject {
     }
 
     clone () {
-        return new Ellipse(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._width, this._height);
+        return new Ellipse(this._id, this._x, this._y, this._background_color, this._background_transparency, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._width, this._height);
     }
 
 

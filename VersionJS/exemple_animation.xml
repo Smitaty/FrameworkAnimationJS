@@ -8,7 +8,7 @@
     <object_text
       text="click this text@to start"
       font="Courier,12,bold"
-      background_transparent="false"
+      background_transparency="false"
       background_color="255,255,255"
       color="0,0,0"
       border_color="0,0,128"
@@ -25,7 +25,7 @@
       coord_y=" 0,10,10,20,10,10,0,0"
       border_color="255,0,0"
       background_color="0,128,0"
-      background_transparent="false"
+      background_transparency="false"
       border_transparency="false"
       visible="false"
     >Polygone</object_polygon>

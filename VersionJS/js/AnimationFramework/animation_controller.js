@@ -28,7 +28,7 @@ export let HEIGHT;
  * Loading and execution functions
  */
 
-export function load_animation(source_file, target_id, width, height) {
+export function load_animation (source_file, target_id, width, height) {
 	// Check if animation files are included
 	if (!ANIMATION_FILES_INCLUDED) {
 		console.log("Animation files are not included. Include them by this way :\n<script>include_animation_files(\"path/of/AnimationFramework/\");</script>");
@@ -72,37 +72,41 @@ export function load_animation(source_file, target_id, width, height) {
 	}
 }
 
-function draw_animation(animation_obj) {
+function draw_animation (animation_obj) {
 	new p5(function (draw_ref) {
 
 		draw_ref.preload = function () { // preload function runs once
 			animation_obj.preload(draw_ref);
-		}
+		};
 
 		draw_ref.setup = function () { // setup function waits until preload one is done
 			animation_obj.setup(draw_ref);
-		}
+		};
 
 		draw_ref.draw = function () {
 			if (!animation_obj.stopAnimation()) {
 				animation_obj.draw(draw_ref);
 			}
-		}
+		};
 
 		draw_ref.mouseClicked = function () {
 			// Get the visible objects that are under the cursor position
 			animation_obj.canvasClicked(draw_ref);
 			// Prevent default
 			return false;
-		}
+		};
 
-		draw_ref.mousePressed = function() {
-			animation_obj.markerStart();
-		}
+		draw_ref.mousePressed = function () {
+			if (draw_ref.mouseButton === draw_ref.LEFT) {
+				animation_obj.markerStart();
+			}
+		};
 
-		draw_ref.mouseDragged = function() {
-			animation_obj.markerInUse(draw_ref);
-		}
+		draw_ref.mouseDragged = function () {
+			if (draw_ref.mouseButton === draw_ref.LEFT) {
+				animation_obj.markerInUse(draw_ref);
+			}
+		};
 
 	});
 }
@@ -112,7 +116,7 @@ function draw_animation(animation_obj) {
  * Others functions 
  */
 
-export function speed_animation(speed) {
+export function speed_animation (speed) {
 	let loop_delay = 30;
 
 	switch (speed) {
@@ -142,7 +146,7 @@ export function speed_animation(speed) {
 	return loop_delay;
 }
 
-export function include_animation_files(path) {
+export function include_animation_files (path) {
 	let script = document.createElement("script");
 	script.src = path + 'p5.min.js';
 	document.lastChild.appendChild(script);
@@ -154,7 +158,7 @@ export function include_animation_files(path) {
 /**
  * Parse a a string into an int array, splitting on commas
  */
-export function parseIntArray(string) {
+export function parseIntArray (string) {
 	if (string == "") return [0, 0, 0];
 
 	let array = string.split(",");

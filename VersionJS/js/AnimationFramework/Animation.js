@@ -208,7 +208,7 @@ export class Animation {
                 let y = parseInt(read_object.getAttribute("y")) | 0;
 
                 let background_color = read_object.hasAttribute("background_color") ? parseIntArray(read_object.getAttribute("background_color")) : [0, 0, 0];
-                let background_transparent = read_object.hasAttribute("background_transparent") ? read_object.getAttribute("background_transparent") == "true" || read_object.getAttribute("background_transparent") == "1" : true;
+                let background_transparency = read_object.hasAttribute("background_transparency") ? read_object.getAttribute("background_transparency") == "true" || read_object.getAttribute("background_transparency") == "1" : true;
 
                 let border_color = read_object.hasAttribute("border_color") ? parseIntArray(read_object.getAttribute("border_color")) : [0, 0, 0];
                 let border_transparency = read_object.hasAttribute("border_transparency") ? read_object.getAttribute("border_transparency") == "true" || read_object.getAttribute("border_transparency") == "1" : true;
@@ -244,34 +244,34 @@ export class Animation {
                         halignment = read_object.hasAttribute("halignment") ? read_object.getAttribute("halignment") : "center";
                         valignment = read_object.hasAttribute("valignment") ? read_object.getAttribute("valignment") : "center";
                         round = read_object.hasAttribute("round") ? parseIntArray(read_object.getAttribute("round")) : [0, 0, 0, 0];
-                        new_object = new Text(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, text, font, color, padding, width, height, halignment, valignment, round);
+                        new_object = new Text(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, text, font, color, padding, width, height, halignment, valignment, round);
                         break;
                     case 'object_image':
                         width = read_object.hasAttribute("width") ? parseInt(read_object.getAttribute("width")) : undefined;
                         height = read_object.hasAttribute("height") ? parseInt(read_object.getAttribute("height")) : undefined;
                         let image = read_object.getAttribute("image");
                         this.objects_image.push(id);
-                        new_object = new ImageFile(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, width, height, image);
+                        new_object = new ImageFile(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, width, height, image);
                         break;
                     case 'object_rectangle':
                         width = parseInt(read_object.getAttribute("width"));
                         height = parseInt(read_object.getAttribute("height"));
                         round = read_object.hasAttribute("round") ? parseIntArray(read_object.getAttribute("round")) : [0, 0, 0, 0];
-                        new_object = new Rectangle(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, width, height, round);
+                        new_object = new Rectangle(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, width, height, round);
                         break;
                     case 'object_polygon':
                         let coord_x = parseIntArray(read_object.getAttribute("coord_x"));
                         let coord_y = parseIntArray(read_object.getAttribute("coord_y"));
-                        new_object = new Polygon(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, coord_x, coord_y);
+                        new_object = new Polygon(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, coord_x, coord_y);
                         break;
                     case 'object_circle':
                         let radius = parseInt(read_object.getAttribute("radius"));
-                        new_object = new Circle(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, radius);
+                        new_object = new Circle(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, radius);
                         break;
                     case 'object_ellipse':
                         width = parseInt(read_object.getAttribute("width"));
                         height = parseInt(read_object.getAttribute("height"));
-                        new_object = new Ellipse(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, width, height);
+                        new_object = new Ellipse(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, width, height);
                         break;
                     case 'object_landmark':
                         width = parseInt(read_object.getAttribute("width"));
@@ -284,14 +284,14 @@ export class Animation {
                         let max_y = parseInt(read_object.getAttribute("max_y"));
                         let min_x = parseInt(read_object.getAttribute("min_x"));
                         let min_y = parseInt(read_object.getAttribute("min_y"));
-                        new_object = new Landmark(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y);
+                        new_object = new Landmark(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y);
                         break;
                     case 'object_grid':
                         let rows = parseInt(read_object.getAttribute("rows"));
                         let columns = parseInt(read_object.getAttribute("columns"));
                         row_height = parseInt(read_object.getAttribute("row_height"));
                         column_width = parseInt(read_object.getAttribute("column_width"));
-                        new_object = new Grid(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, rows, columns, row_height, column_width);
+                        new_object = new Grid(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, rows, columns, row_height, column_width);
                         break;
                     case 'object_table':
                         let values = read_object.getAttribute("values");
@@ -309,7 +309,7 @@ export class Animation {
                         column_width = parseInt(read_object.getAttribute("column_width"));
                         let header_row_width = read_object.hasAttribute("header_row_width") ? parseInt(read_object.getAttribute("header_row_width")) : column_width;
                         let header_column_height = read_object.hasAttribute("header_column_height") ? parseInt(read_object.getAttribute("header_column_height")) : row_height;
-                        new_object = new Table(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, values, row_height, column_width, font, color, padding, halignment, valignment, has_header_columns, has_header_rows, header_font, header_color, header_background_color, header_column_height, header_row_width);
+                        new_object = new Table(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, values, row_height, column_width, font, color, padding, halignment, valignment, has_header_columns, has_header_rows, header_font, header_color, header_background_color, header_column_height, header_row_width);
                         break;
                     case 'object_graph':
                         let algorithmic_function = read_object.getAttribute("function");
@@ -324,7 +324,7 @@ export class Animation {
                         let graph_min_x = parseInt(read_object.getAttribute("min_x"));
                         let graph_min_y = parseInt(read_object.getAttribute("min_y"));
                         let draw_point = read_object.hasAttribute("draw_point") ? (read_object.getAttribute("draw_point") === "true" ? true : false) : false;
-                        new_object = new Graph(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, graph_height, graph_width, graph_scale_x, graph_scale_y, graph_unit_x, graph_unit_y, algorithmic_function, graph_max_x, graph_max_y, draw_point, graph_min_x, graph_min_y);
+                        new_object = new Graph(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, graph_height, graph_width, graph_scale_x, graph_scale_y, graph_unit_x, graph_unit_y, algorithmic_function, graph_max_x, graph_max_y, draw_point, graph_min_x, graph_min_y);
                         break;
                     case 'object_arrow':
                         let width_line = parseInt(read_object.getAttribute("width_line"));
@@ -332,7 +332,7 @@ export class Animation {
                         let width_triangle = parseInt(read_object.getAttribute("width_triangle"));
                         let height_triangle = parseInt(read_object.getAttribute("height_triangle"));
                         let rotation = read_object.hasAttribute("rotation") ? parseInt(read_object.getAttribute("rotation")) : 0;
-                        new_object = new Arrow(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, width_line, hegiht_line, width_triangle, height_triangle, rotation);
+                        new_object = new Arrow(id, x, y, background_color, background_transparency, border_color, border_transparency, border_size, DEFAULT_STATE, layer, visible, opacity, angle, width_line, hegiht_line, width_triangle, height_triangle, rotation);
                         break;
                     case 'object_copy':
                         let idcopy = read_object.getAttribute("idcopy");

@@ -25,8 +25,8 @@ export class SetProperty extends Instruction {
 			case "background_color":
 				this.target.background_color = parseIntArray(this.value);
 				break;
-			case "background_transparent":
-				this.target.background_transparent = this.value == "true" | false;
+			case "background_transparency":
+				this.target.background_transparency = this.value == "true" | false;
 				break;
 			case "border_color":
 				this.target.border_color = parseIntArray(this.value);
