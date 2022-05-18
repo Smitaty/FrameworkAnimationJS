@@ -107,7 +107,7 @@ export class Table extends AnimatedObject {
      * [[x_start, y_start, x_end, y_end]]
      * @type [[number, number, number, number]]
      */
-    coord_cells;
+    _coord_cells;
 
     /**
      * Number of columns
