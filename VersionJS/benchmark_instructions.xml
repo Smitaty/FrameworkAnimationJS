@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE animation SYSTEM "animation.dtd">
+<animation
+		marker_enabled="false"
+		marker_color="255,0,0"
+		marker_stroke_weight="5">
+	<init>
+		<start_button present="false" />
+	</init>
+
+	<background>
+		#86A8E7
+	</background>
+
+	<objects>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="10"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="center"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_center</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="75"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="blink"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_blink</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="140"
+				y="55"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="centerx"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_centerx</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="205"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="centery"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_centery</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="270"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="click"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_click</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="335"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="down"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_down</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="400"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="goto"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_goto</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="465"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="label"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_label</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="530"
+				y="55"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="left"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_left</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="595"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="moveto"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_moveto</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="660"
+				y="55"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="right"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_right</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="725"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="sleep"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_sleep</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="790"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="state"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_state</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="855"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="stop"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_stop</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="920"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="trigger"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_trigger</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="985"
+				y="110"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="up"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_up</object_text>
+		<object_text
+				halignment="center"
+				valignment="center"
+				x="1050"
+				y="10"
+				background_color="209,107,165"
+				background_transparent="0"
+				border_color="0,0,0"
+				border_transparency="1"
+				border_size="1"
+				font="Courier,14,normal"
+				text="wait"
+				layer="0"
+				visible="true"
+				opacity="255"
+				angle="0"
+				width="60"
+				height="40"
+				round="10,10,10,10">rect_wait</object_text>
+	</objects>
+
+	<programs>
+		<program assigned_to="rect_center">
+			<click />
+			<center />
+		</program>
+		<program assigned_to="rect_blink">
+			<click />
+			<blink
+					times="6"
+					delay="20" />
+		</program>
+		<program assigned_to="rect_centerx">
+			<click />
+			<centerx />
+		</program>
+		<program assigned_to="rect_centery">
+			<click />
+			<centery />
+		</program>
+		<program assigned_to="rect_click">
+			<click />
+			<setproperty
+					object="rect_click"
+					property="text"
+					value="clicked" />
+		</program>
+		<program assigned_to="rect_down">
+			<click />
+			<down
+					y="100"
+					dy="1" />
+		</program>
+		<program assigned_to="rect_goto">
+			<click />
+			<setproperty
+					object="rect_goto"
+					property="text"
+					value="Test@label" />
+		</program>
+		<program assigned_to="rect_label">
+			<click />
+			<label value="label" />
+			<down
+					y="200"
+					dy="10" />
+			<up
+					y="200"
+					dy="10" />
+			<goto value="label" />
+			<trigger
+					object="rect_goto"
+					value="goto" />
+		</program>
+		<program assigned_to="rect_left">
+			<click />
+			<left
+					x="100"
+					dx="10" />
+		</program>
+		<program assigned_to="rect_moveto">
+			<click />
+			<moveto
+					x="100"
+					y="100"
+					dx="5"
+					dy="5" />
+		</program>
+		<program assigned_to="rect_right">
+			<click />
+			<right
+					x="100"
+					dx="5" />
+		</program>
+		<program assigned_to="rect_sleep">
+			<click />
+			<down
+					y="200"
+					dy="10" />
+			<setproperty
+					object="rect_sleep"
+					property="text"
+					value="Sleep 2s" />
+			<sleep value="2000" />
+			<setproperty
+					object="rect_sleep"
+					property="text"
+					value="End" />
+		</program>
+		<program assigned_to="rect_state">
+			<click />
+			<setproperty
+					object="rect_state"
+					property="text"
+					value="Déprécié" />
+		</program>
+		<program assigned_to="rect_stop">
+			<click />
+			<stop />
+		</program>
+		<program assigned_to="rect_trigger">
+			<click />
+			<trigger
+					object="rect_wait"
+					value="trigger" />
+		</program>
+		<program assigned_to="rect_up">
+			<click />
+			<up y="100" dy="1" />
+		</program>
+		<program assigned_to="rect_wait">
+			<click />
+			<setproperty
+					object="rect_wait"
+					property="text"
+					value="Attend@trigger" />
+			<wait value="trigger" />
+			<setproperty
+					object="rect_wait"
+					property="text"
+					value="Trigger@recu" />
+		</program>
+	</programs>
+
+</animation>

@@ -1,77 +1,87 @@
+import { AnimatedObject } from "./AnimatedObject.js";
 /**
  * 
  */
 
-class Polygon extends AnimatedObject {
-    
-	constructor(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle, coord_x, coord_y) {
-        super(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle);
-        this.coord_x = coord_x; // x coords' list
-        this.coord_y = coord_y; // y coords' list
+export class Polygon extends AnimatedObject {
+
+    /**
+     * X coordinate of all the points
+     * @type [number]
+     */
+    _coord_x;
+    get coord_x () {
+        return this._coord_x;
+    }
+    set coord_x (value) {
+        this._coord_x = value;
     }
 
-    getCoordx() {
-        return this.coord_x;
+    /**
+     * Y coordinate of all the points
+     * @type [number]
+     */
+    _coord_y;
+    get coord_y () {
+        return this._coord_y;
+    }
+    set coord_y (value) {
+        this._coord_y = value;
     }
 
-    getCoordy() {
-        return this.coord_y;
+    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, coord_x, coord_y) {
+        super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+        this._coord_x = coord_x; // x coords' list
+        this._coord_y = coord_y; // y coords' list
     }
 
-    setCoordx(coord_x) {
-        this.coord_x = coord_x;
-    }
-
-    setCoordy(coord_y) {
-        this.coord_y = coord_y;
-    }
-
-    draw(drawing) {
+    draw (drawing) {
+        drawing.push();
         super.draw(drawing);
         drawing.beginShape();
-        for (var i = 0; i < this.coord_x.length; ++i) {
-            drawing.vertex(this.x + this.coord_x[i], this.y + this.coord_y[i]);
+        for (let i = 0; i < this._coord_x.length; ++i) {
+            drawing.vertex(this._x + this._coord_x[i], this._y + this._coord_y[i]);
         }
         drawing.endShape(drawing.CLOSE);
+        drawing.pop();
     }
-    
-    isClicked(x, y) {
-        var min_x = this.coord_x[0];
-        var max_x = this.coord_x[0];
-        var min_y = this.coord_y[0];
-        var max_y = this.coord_y[0];
 
-        for (var i = 1; i < this.coord_x.length; ++i) {
-            max_x = (this.coord_x[i] > max_x) ? this.coord_x[i] : max_x;
-            min_x = (this.coord_x[i] < min_x) ? this.coord_x[i] : min_x;
-            max_y = (this.coord_y[i] > max_y) ? this.coord_y[i] : max_y;
-            min_y = (this.coord_y[i] < min_y) ? this.coord_y[i] : min_y;
+    isClicked (x, y, drawing) {
+        let min_x = this._coord_x[0];
+        let max_x = this._coord_x[0];
+        let min_y = this._coord_y[0];
+        let max_y = this._coord_y[0];
+
+        for (let i = 1; i < this._coord_x.length; ++i) {
+            max_x = (this._coord_x[i] > max_x) ? this._coord_x[i] : max_x;
+            min_x = (this._coord_x[i] < min_x) ? this._coord_x[i] : min_x;
+            max_y = (this._coord_y[i] > max_y) ? this._coord_y[i] : max_y;
+            min_y = (this._coord_y[i] < min_y) ? this._coord_y[i] : min_y;
         }
 
-		return (x >= this.x + min_x) && (x <= this.x + max_x) && (y >= this.y + min_y) && (y <= this.y + max_y);
+        return (x >= this._x + min_x) && (x <= this._x + max_x) && (y >= this._y + min_y) && (y <= this._y + max_y);
     }
-    
-    toXml() {
-        var polygon = document.createElement("object_polygon");
-        polygon.innerHTML = this.id;
-        polygon.setAttribute("x", this.x);
-        polygon.setAttribute("y",this.y);
-        polygon.setAttribute("bgcolor", this.bgcolor);
-        polygon.setAttribute("bgtransparent", this.bgtransparent);
-        polygon.setAttribute("bocolor", this.bocolor);
-        polygon.setAttribute("botransparent", this.botransparent);
-        polygon.setAttribute("bosize", this.bosize);
-        polygon.setAttribute("layer", this.layer);
-        polygon.setAttribute("visible", this.visible);
-        polygon.setAttribute("opacity", this.opacity);
-        // polygon.setAttribute("angle", this.angle); 
-        polygon.setAttribute("coord_x", this.coord_x);
-        polygon.setAttribute("coord_y", this.coord_y);
+
+    toXml () {
+        let polygon = document.createElement("object_polygon");
+        polygon.innerHTML = this._id;
+        polygon.setAttribute("x", this._x);
+        polygon.setAttribute("y", this._y);
+        polygon.setAttribute("background_color", this._background_color);
+        polygon.setAttribute("background_transparent", this._background_transparent);
+        polygon.setAttribute("border_color", this._border_color);
+        polygon.setAttribute("border_transparency", this._border_transparency);
+        polygon.setAttribute("border_size", this._border_size);
+        polygon.setAttribute("layer", this._layer);
+        polygon.setAttribute("visible", this._visible);
+        polygon.setAttribute("opacity", this._opacity);
+        // polygon.setAttribute("angle", this._angle); 
+        polygon.setAttribute("coord_x", this._coord_x);
+        polygon.setAttribute("coord_y", this._coord_y);
         return polygon;
     }
 
-    clone() {
-        return new Polygon(this.id, this.x, this.y, this.bgcolor, this.bgtransparent, this.bocolor, this.botransparent, this.state, this.layer, this.visible, this.opacity, this.angle, this.coord_x, this.coord_y);
+    clone () {
+        return new Polygon(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._coord_x, this._coord_y);
     }
-
 }

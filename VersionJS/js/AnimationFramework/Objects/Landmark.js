@@ -1,183 +1,333 @@
+import { AnimatedObject } from "./AnimatedObject.js";
 /**
  * 
  */
+export class Landmark extends AnimatedObject {
 
-class Landmark extends AnimatedObject {
-    
-	constructor(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y) {
-        super(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle);
-        this.height = height;
-        this.width = width;
-        this.scale_x = scale_x;
-        this.scale_y = scale_y;
-        this.unit_x = unit_x;
-        this.unit_y = unit_y;
-    }
+	/** @type number The height in pixels */
+	_height;
+	get height () {
+		return this._height;
+	}
+	set height (value) {
+		this._height = value;
+	}
 
-    getWidth() {
-        return this.width;
-    }
+	/** @type number The width in pixels */
+	_width;
+	get width () {
+		return this._width;
+	}
+	set width (value) {
+		this._width = value;
+	}
 
-    getHeight() {
-        return this.height;
-    }
+	/** @type number The scaling of the X axis  */
+	_scale_x;
+	get scale_x () {
+		return this._scale_x;
+	}
+	set scale_x (value) {
+		this._scale_x = value;
+	}
 
-    getScaleX() {
-        return this.scale_x;
-    }
+	/** @type number The scaling of the Y axis  */
+	_scale_y;
+	get scale_y () {
+		return this._scale_y;
+	}
+	set scale_y (value) {
+		this._scale_y = value;
+	}
 
-    getScaleY() {
-        return this.scale_y;
-    }
+	/** @type String The unit of the X axis */
+	_unit_x;
+	get unit_x () {
+		return this._unit_x;
+	}
+	set unit_x (value) {
+		this._unit_x = value;
+	}
 
-    getUnitX() {
-        return this.unit_x;
-    }
+	/** @type String The unit of the Y axis */
+	_unit_y;
+	get unit_y () {
+		return this._unit_y;
+	}
+	set unit_y (value) {
+		this._unit_y = value;
+	}
 
-    getUnitY() {
-        return this.unit_y;
-    }
+	/** @type number The minimal value of the X axis  */
+	_min_x;
+	get min_x () {
+		return this._min_x;
+	}
+	set min_x (value) {
+		this._min_x = value;
+	}
 
-    setWidth(width) {
-        this.width = width;
-    }
+	/** @type number The maximal value of the X axis  */
+	_max_x;
+	get max_x () {
+		return this._max_x;
+	}
+	set max_x (value) {
+		this._max_x = value;
+	}
 
-    setHeight(height) {
-        this.height = height;
-    }
+	/** @type number The minimal value of the Y axis  */
+	_min_y;
+	get min_y () {
+		return this._min_y;
+	}
+	set min_y (value) {
+		this._min_y = value;
+	}
 
-    setScaleX(scale_x) {
-        this.scale_x = scale_x;
-    }
+	/** @type number The minimal value of the Y axis  */
+	_max_y;
+	get max_y () {
+		return this._max_y;
+	}
+	set max_y (value) {
+		this._max_y = value;
+	}
 
-    setScaleY(scale_y) {
-        this.scale_y = scale_y;
-    }
+	constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size,
+		state, layer, visible, opacity, angle, height, width, scale_x, scale_y, unit_x, unit_y, max_x, max_y, min_x, min_y) {
+		super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+		this._height = height;
+		this._width = width;
+		this._scale_x = scale_x;
+		this._scale_y = scale_y;
+		this._unit_x = unit_x;
+		this._unit_y = unit_y;
+		this._max_x = max_x;
+		this._max_y = max_y;
 
-    setUnitX(unit_x) {
-        this.unit_x = unit_x;
-    }
+		this._min_x = min_x;
+		this._min_y = min_y;
+	}
 
-    setUnitY(unit_y) {
-        this.unit_y = unit_y;
-    }
-
-    draw(drawing) {
-        super.draw(drawing);
-
-        // Forcer la bordure pour les éléments du repère
-        drawing.stroke(this.bocolor, this.opacity * 255);
+	draw (drawing) {
+		drawing.push();
+		super.draw(drawing);
 
 		drawing.textFont("courrier");
 		drawing.textSize(12);
-        drawing.textStyle(drawing.NORMAL);
-        drawing.angleMode(drawing.DEGREES);
+		drawing.textStyle(drawing.NORMAL);
+		drawing.angleMode(drawing.DEGREES);
 
-        var axis1;       //Vector utilisé pour effectuer la rotation : à placer au milieu du texte
-        var axis2;
-        var i;
-        if(this.height > 0 && this.width > 0) {
-            drawing.line(this.x, this.y + this.width, this.x + this.width, this.y + this.width);
-            drawing.line(this.x, this.y + this.height, this.x, this.y);
-            // Dessin des triangles 
-            drawing.triangle(this.x - this.width * 0.02, this.y, this.x + this.width * 0.02, this.y, this.x, this.y - this.height * 0.04);
-            drawing.triangle(this.x + this.width, this.y + this.height + this.height * 0.02, this.x + this.width, this.y + this.height - this.height * 0.02, this.x + this.width + this.width * 0.04, this.y + this.height);
-            // Enlever la bordure pour les textes et forcer l'arrière-plan
-            if (this.botransparent) drawing.noStroke();
-            else drawing.stroke(this.bocolor[0], this.bocolor[1], this.bocolor[2], this.opacity * 255);
-            drawing.fill(this.bgcolor[0], this.bgcolor[1], this.bgcolor[2], this.opacity * 255);
-            //texte x
-            drawing.text(this.unit_x, this.x + this.width/2, this.y + this.height + 25);
-            //texte y (Ca serait bien d'orienter le texte)
+		this.drawAxis(drawing);
+		this.drawScale(drawing);
+		this.drawAxisArrow(drawing);
+		this.drawXUnit(drawing);
+		this.drawYUnit(drawing);
+		drawing.pop();
+	}
 
-            drawing.push();        //sert à pas faire la rotation et la translation sur tous les objets (s'arrête après pop)
-                drawing.translate(this.x - 20, this.y + this.height/2);
-                drawing.rotate(-90);
-                drawing.text(this.unit_y,0, 0);
-            drawing.pop();
-        }
-        else if(this.height < 0 && this.width > 0) { 
-            drawing.line(this.x, this.y + this.width, this.x + this.width, this.y + this.width);
-            drawing.line(this.x + this.width, this.y - this.height, this.x + this.width, this.y);
-            // Enlever la bordure pour les textes et forcer l'arrière-plan
-            if (this.botransparent) drawing.noStroke();
-            else drawing.stroke(this.bocolor[0], this.bocolor[1], this.bocolor[2], this.opacity * 255);
-            drawing.fill(this.bgcolor[0], this.bgcolor[1], this.bgcolor[2], this.opacity * 255);
-            //texte x
-            drawing.text(this.unit_x, this.x + this.width/2, this.y + this.width + 25);
-            
-            //application de la translation pour fixer le point initial et rotation
-            darwing.translate(this.x + this.width + 20, this.y - this.height/2);
-            darwing.rotate(90);
-            //texte y
-            if (this.botransparent) drawing.noStroke();
-            else drawing.stroke(this.bocolor[0], this.bocolor[1], this.bocolor[2], this.opacity * 255);
-            drawing.text(this.unit_y, 0, 0);
-        }
-        else if(this.height > 0 && this.width < 0) {
-            drawing.line(this.x - this.width, this.y + this.height, this.x - this.width, this.y); 
-            drawing.line(this.x, this.y - this.width, this.x - this.width, this.y - this.width);
-            // Enlever la bordure pour les textes et forcer l'arrière-plan
-            if (this.botransparent) drawing.noStroke();
-            else drawing.stroke(this.bocolor[0], this.bocolor[1], this.bocolor[2], this.opacity * 255);
-            drawing.fill(this.bgcolor[0], this.bgcolor[1], this.bgcolor[2], this.opacity * 255);
-            //texte x
-            drawing.text(this.unit_x, this.x - this.width/2, this.y + this.height + 25);
-            //texte y (Ca serait bien d'orienter le texte)
-            axis1 = drawing.createVector(this.x - this.width/2, this.y + this.height + 25);
-            //axis2 = drawing.createVector(this.x - this.width/2, this.y + this.height + 40);
-            //for(i = 0; i>-180; --i) {
-            //drawing.push();
-            drawing.translate(this.x - this.width + 10, this.y + this.height/2 );
-            drawing.rotate(-90);
-            drawing.text(this.unit_y, 0, 0);
-            //drawing.pop();
-        }
-        else if(this.height < 0 && this.width < 0) {
-            drawing.line(this.x, this.y - this.width, this.x - this.width, this.y - this.width);
-            drawing.line(this.x, this.y - this.height, this.x, this.y);
-            // Enlever la bordure pour les textes et forcer l'arrière-plan
-            if (this.botransparent) drawing.noStroke();
-            else drawing.stroke(this.bocolor[0], this.bocolor[1], this.bocolor[2], this.opacity * 255);
-            drawing.fill(this.bgcolor[0], this.bgcolor[1], this.bgcolor[2], this.opacity * 255);
-            //texte x
-            drawing.text(this.unit_x, this.x + this.width/2, this.y + 25);
-            //texte y (Ca serait bien d'orienter le texte)
-            axis1 = drawing.createVector(this.x + this.width/2, this.y + 25);
-            drawing.rotate(90, axis1);
-            drawing.text(this.unit_y, this.x + this.width + 25, this.y + this.height/2 );
-        }
-    }
+	drawAxis (drawing) {
+		if (!this._border_transparency) {
+			drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity);
+		}
 
-    isClicked(x, y) {
-		return (x >= this.x) && (x <= this.x + this.width) && (y >= this.y) && (y <= this.y + this.height);
-    }
-    
-    toXml() {
-        var landmark = document.createElement("object_landmark");
-        landmark.innerHTML = this.id;
-        landmark.setAttribute("x", this.x);
-        landmark.setAttribute("y",this.y);
-        landmark.setAttribute("bgcolor", this.bgcolor); // r, g, b
-        landmark.setAttribute("bgtransparent", this.bgtransparent);
-        landmark.setAttribute("bocolor", this.bocolor); // r, g, b
-        landmark.setAttribute("botransparent", this.botransparent);
-        landmark.setAttribute("bosize", this.bosize);
-        landmark.setAttribute("layer", this.layer);
-        landmark.setAttribute("visible", this.visible);
-        landmark.setAttribute("opacity", this.opacity);
-        // landmark.setAttribute("angle", this.angle); // degrees
-        landmark.setAttribute("width", this.width);
-        landmark.setAttribute("height", this.height);
-        landmark.setAttribute("scale_x", this.scale_x);
-        landmark.setAttribute("scale_y", this.scale_y);
-        landmark.setAttribute("unit_x", this.unit_x);
-        landmark.setAttribute("unit_y", this.unit_y);
-        return landmark;
-    }
+		// Origin x coordinate
+		let px = this.getXMapping(0, drawing);
 
-    clone() {
-        return new Landmark(this.id, this.x, this.y, this.bgcolor, this.bgtransparent, this.bocolor, this.botransparent, this.state, this.layer, this.visible, this.opacity, this.angle, this.width, this.height, this.scale_x, this.scale_y, this.unit_x, this.unit_y);
-    }
+		// Origin y coordinate
+		let py = this.getYMapping(0, drawing);
 
+		drawing.push();
+		drawing.translate(this._x, this._y);
+		// Y axis
+		drawing.line(px, 0, px, -this._height);
+		// X axis
+		drawing.line(0, -py, this._width, -py);
+
+		drawing.pop();
+		drawing.noStroke();
+	}
+
+	drawScale (drawing) {
+		if (!this._border_transparency) {
+			drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity);
+		}
+
+		drawing.push();
+		// On se déplace à l'origine du graphe
+		drawing.translate(this._x, this._y);
+
+		// Scale of X axis
+
+		let px = this._min_x;
+		// Compute the Y coordinate of the graph's origin
+		let py = this.getYMapping(0, drawing);
+
+		let maxX = this._width < 0 ? 0 : this._width;
+		while (this.getXMapping(px, drawing) < maxX) {
+			// Draw scale line
+			drawing.line(this.getXMapping(px, drawing),
+				-py - 5,
+				this.getXMapping(px, drawing),
+				-py + 5);
+
+			// Draw scale text
+			drawing.text(px, this.getXMapping(px, drawing), -py + 20);
+			px += this._scale_x;
+		}
+
+		// Scale of Y axis
+
+		py = this._min_y;
+		// Compute the X coordinate of the graph's origin
+		px = this.getXMapping(0, drawing);
+		let maxY = this._height < 0 ? 0 : this._height;
+		while (this.getYMapping(py, drawing) < maxY) {
+			// Draw scale line
+			drawing.line(
+				px - 5,
+				-this.getYMapping(py, drawing),
+				px + 5,
+				-this.getYMapping(py, drawing));
+
+			// Draw scale text
+			drawing.text(py, px - 20, -this.getYMapping(py, drawing));
+			py += this._scale_y;
+		}
+
+		drawing.pop();
+	}
+
+	drawAxisArrow (drawing) {
+		drawing.push();
+		drawing.translate(this._x, this._y);
+
+		if (!this._background_transparent)
+			drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity);
+		else
+			drawing.noFill();
+
+		let px = this.getXMapping(0, drawing);
+		let py = this.getYMapping(0, drawing);
+
+		// Y axis
+		if (this._height < 0) {
+			drawing.triangle(px - 3, 0, px + 3, 0, px, - 3);
+		} else {
+			drawing.triangle(px - 3, -this._height, px + 3, -this._height, px, -this._height - 3);
+		}
+
+		// X axis
+		if (this._width < 0) {
+			drawing.triangle(0, -py + 3, 0, -py - 3, 3, -py);
+		} else {
+			drawing.triangle(this._width, -py + 3, this._width, -py - 3, this._width + 3, -py);
+		}
+		drawing.pop();
+	}
+
+	drawXUnit (drawing) {
+		drawing.push();
+		drawing.translate(this._x, this._y);
+		drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity);
+
+		let py;
+		if (this._height < 0) {
+			py = drawing.map(0, this._min_y, this._max_y, this._height, 0, true);
+		} else {
+			py = drawing.map(0, this._min_y, this._max_y, 0, this._height, true);
+		}
+
+		let px;
+
+		if (this._width < 0) {
+			px = 0;
+		} else {
+			px = this._width;
+		}
+
+		drawing.text(this._unit_x, px, -py + 15);
+
+		drawing.pop();
+	}
+
+	drawYUnit (drawing) {
+		drawing.push();  // sert à pas faire la rotation et la translation sur tous les objets (s'arrête après pop)
+		drawing.translate(this._x, this._y);
+
+		let px = this.getXMapping(0, drawing);
+
+		if (this._height < 0) {
+			drawing.translate(px - 10, - 10);
+		} else {
+			drawing.translate(px - 10, -this._height - 10);
+		}
+
+
+		drawing.text(this._unit_y, 0, 0);
+
+		drawing.pop();
+	}
+
+	isClicked (x, y, drawing) {
+		return (x >= this._x) && (x <= this._x + this._width) && (y >= this._y) && (y <= this._y + this._height);
+	}
+
+	toXml () {
+		let landmark = document.createElement("object_landmark");
+		landmark.innerHTML = this._id;
+		landmark.setAttribute("x", this._x);
+		landmark.setAttribute("y", this._y);
+		landmark.setAttribute("background_color", this._background_color); // r, g, b
+		landmark.setAttribute("background_transparent", this._background_transparent);
+		landmark.setAttribute("border_color", this._border_color); // r, g, b
+		landmark.setAttribute("border_transparency", this._border_transparency);
+		landmark.setAttribute("border_size", this._border_size);
+		landmark.setAttribute("layer", this._layer);
+		landmark.setAttribute("visible", this._visible);
+		landmark.setAttribute("opacity", this._opacity);
+		// landmark.setAttribute("angle", this.angle); // degrees
+		landmark.setAttribute("width", this._width);
+		landmark.setAttribute("height", this._height);
+		landmark.setAttribute("scale_x", this._scale_x);
+		landmark.setAttribute("scale_y", this._scale_y);
+		landmark.setAttribute("unit_x", this._unit_x);
+		landmark.setAttribute("unit_y", this._unit_y);
+		landmark.setAttribute("min_x", this._min_x);
+		landmark.setAttribute("min_y", this._min_y);
+		landmark.setAttribute("max_x", this._max_x);
+		landmark.setAttribute("max_y", this._max_y);
+		return landmark;
+	}
+
+	/**
+	 * Transform graph's X coordinate in pixels width
+	 * @param {number} x 
+	 * @param {p5} The p5 instance
+	 * @returns number
+	 */
+	getXMapping (x, drawing) {
+		if (this._width < 0) {
+			return drawing.map(x, this._min_x, this._max_x, this._width, 0, true);
+		}
+		return drawing.map(x, this._min_x, this._max_x, 0, this._width, true);
+	}
+
+	/**
+	 * Transform graph's Y coordinate in pixels height
+	 * @param {number} y 
+	 * @param {p5} The p5 instance
+	 * @returns number
+	 */
+	getYMapping (y, drawing) {
+		if (this._height < 0) {
+			return drawing.map(y, this._min_y, this._max_y, this._height, 0);
+		}
+		return drawing.map(y, this._min_y, this._max_y, 0, this._height);
+	}
+
+	clone () {
+		return new Landmark(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency, this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._width, this._height, this._scale_x, this._scale_y, this._unit_x, this._unit_y, this._max_x, this._max_y, this._min_x, this._min_y);
+	}
 }

@@ -3,141 +3,174 @@
  */
 
 // File-shared object's states
-var DEFAULT_STATE = "normal";
-var WAITING_CLICK_STATE = "waiting_click";
-var SLEEPING_STATE = "sleeping";
-var MOVING_STATE = "moving";
+export let DEFAULT_STATE = "normal";
+export let WAITING_CLICK_STATE = "waiting_click";
+export let SLEEPING_STATE = "sleeping";
+export let MOVING_STATE = "moving";
 
-class AnimatedObject {
-   
-    constructor(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle) {
-        this.id = id;
-        this.x = x;
-        this.y = y;
-        this.bgcolor = bgcolor; // r, g, b
-        this.bgtransparent = bgtransparent;
-        this.bocolor = bocolor; // r, g, b
-        this.botransparent = botransparent;
-        this.bosize = bosize;
-        this.state = state;
-        this.layer = layer;
-        this.visible = visible;
-        this.opacity = opacity;
-        this.angle = angle; // degrees
+export class AnimatedObject {
+
+    /** Id of the object in the xml  
+     * @type string */
+    _id;
+    get id () {
+        return this._id;
+    }
+    set id (value) {
+        this._id = value;
     }
 
-    getId() {
-        return this.id;
+    /** X coordinate 
+     * @type number */
+    _x;
+    get x () {
+        return this._x;
+    }
+    set x (value) {
+        this._x = value;
     }
 
-    getX() {
-        return this.x;
+    /** Y coordinate
+     * @type number */
+    _y;
+    get y () {
+        return this._y;
+    }
+    set y (value) {
+        this._y = value;
     }
 
-    getY() {
-        return this.y;
+    /** background_color
+     * @type string*/
+    _background_color;
+    get background_color () {
+        return this._background_color;
+    }
+    set background_color (value) {
+        this._background_color = value;
     }
 
-    getBgcolor() {
-        return this.bgcolor;
+    /** background_transparent
+     * @type bool */
+    _background_transparent;
+    get background_transparent () {
+        return this._background_transparent;
+    }
+    set background_transparent (value) {
+        this._background_transparent = value;
     }
 
-    getBgtransparent() {
-        return this.bgtransparent;
+    /** border_color
+     * @type string */
+    _border_color;
+    get border_color () {
+        return this._border_color;
+    }
+    set border_color (value) {
+        this._border_color = value;
     }
 
-    getBocolor() {
-        return this.bocolor;
+    /** border_transparency
+     * @type bool */
+    _border_transparency;
+    get border_transparency () {
+        return this._border_transparency;
+    }
+    set border_transparency (value) {
+        this._border_transparency = value;
     }
 
-    getBotransparent() {
-        return this.botransparent;
+    /** border_size
+     * @type number */
+    _border_size;
+    get border_size () {
+        return this._border_size;
+    }
+    set border_size (value) {
+        this._border_size = value;
     }
 
-    getBosize() {
-        return this.bosize;
+    /** state
+     * @type string */
+    _state;
+    get state () {
+        return this._state;
+    }
+    set state (value) {
+        this._state = value;
     }
 
-    getState() {
-        return this.state;
+    /** layer which will be draw
+     * @type number
+     */
+    _layer;
+    get layer () {
+        return this._layer;
+    }
+    set layer (value) {
+        this._layer = value;
     }
 
-    getLayer() {
-        return this.layer;
+    /** Is it visible or not
+     * @type bool
+     */
+    _visible;
+    get visible () {
+        return this._visible;
+    }
+    set visible (value) {
+        this._visible = value;
     }
 
-    getVisible() {
-        return this.visible;
+    /**
+     * opacity
+     * @type number
+     */
+    _opacity;
+    get opacity () {
+        return this._opacity;
+    }
+    set opacity (value) {
+        this._opacity = value;
     }
 
-    getOpacity() {
-        return this.opacity;
+    /**
+     * angle
+     * @type [number]
+     */
+    _angle;
+
+
+    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle) {
+        this._id = id;
+        this._x = x;
+        this._y = y;
+        this._background_color = background_color; // r, g, b
+        this._background_transparent = background_transparent;
+        this._border_color = border_color; // r, g, b
+        this._border_transparency = border_transparency;
+        this._border_size = border_size;
+        this._state = state;
+        this._layer = layer;
+        this._visible = visible;
+        this._opacity = opacity;
+        this._angle = angle; // degrees
     }
 
-    getAngle() {
-        return this.angle;
-    }
-
-    setId(id) {
-        this.id = id;
-    }
-
-    setX(x) {
-        this.x = x;
-    }
-
-    setY(y) {
-        this.y = y;
-    }
-
-    setBgcolor(bgcolor) {
-        this.bgcolor = bgcolor;
-    }
-    
-    setBgtransparent(bgtransparent) {
-        this.bgtransparent = bgtransparent;
-    }
-
-    setBocolor(bocolor) {
-        this.bocolor = bocolor;
-    }
-
-    setBotransparent(botransparent) {
-        this.botransparent = botransparent;
-    }
-
-    setBosize(bosize) {
-        this.bosize = bosize;
-    }
-
-    setState(state) {
-        this.state = state;
-    }
-
-    setLayer(layer) {
-        this.layer = layer;
-    }
-
-    setVisible(visible) {
-        this.visible = visible;
-    }
-
-    setOpacity(opacity) {
-        this.opacity = opacity;
-    }
-
-    setAngle(angle) {
-        this.angle = angle;
-    }
-
-    draw(drawing) {
+    draw (drawing) {
         // Fill
-        if (this.bgtransparent) drawing.fill(0, 0);
-        else drawing.fill(this.bgcolor[0], this.bgcolor[1], this.bgcolor[2], this.opacity * 255); // fill([r, g, b], opacity) doesn't work :)
+        if (this._background_transparent) drawing.fill(0, 0);
+        else drawing.fill(this._background_color[0], this._background_color[1], this._background_color[2], this._opacity); // fill([r, g, b], opacity) doesn't work :)
         // Border
-        if (this.botransparent) drawing.noStroke();
-        else drawing.stroke(this.bocolor[0], this.bocolor[1], this.bocolor[2], this.opacity * 255);
-        drawing.strokeWeight(this.bosize);
+        if (this._border_transparency) drawing.noStroke();
+        else drawing.stroke(this._border_color[0], this._border_color[1], this._border_color[2], this._opacity);
+        drawing.strokeWeight(this._border_size);
     }
 
+    get angle () {
+        return this._angle;
+    }
+    set angle (value) {
+        this._angle = value;
+    }
 }

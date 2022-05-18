@@ -1,15 +1,21 @@
 /**
  * This instruction center horizontaly the object atached to it
  */
-
-class CenterX extends Instruction {
+import { Text } from "../Objects/Text.js";
+import { Instruction } from "./Instruction.js";
+import { WIDTH } from '../animation_controller.js';
+export class CenterX extends Instruction {
 
 	constructor(object) {
 		super(object);
 	}
 
 	execute() {
-		this.object.setX((WIDTH-this.object.getWidth())/2);
+		if (this.object instanceof Text) {
+			this.object.x = ((WIDTH - this.object.real_width) / 2);
+		} else {
+			this.object.x = ((WIDTH - this.object.width) / 2);
+		}
 	}
 	
 }

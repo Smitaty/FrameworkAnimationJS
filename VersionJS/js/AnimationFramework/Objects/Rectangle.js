@@ -1,71 +1,85 @@
+import { AnimatedObject } from "./AnimatedObject.js";
 /**
  * 
  */
 
-class Rectangle extends AnimatedObject {
-    
-	constructor(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle, width, height, round) {
-        super(id, x, y, bgcolor, bgtransparent, bocolor, botransparent, bosize, state, layer, visible, opacity, angle);
-        this.width = width;
-        this.height = height;
-        this.round = round; // tl, tr, bl, br
+export class Rectangle extends AnimatedObject {
+    /**
+     * The rect width
+     * @type number
+     */
+    _width;
+    get width () {
+        return this._width;
     }
-    
-    getWidth() {
-        return this.width;
-    }
-
-    getHeight() {
-        return this.height;
+    set width (value) {
+        this._width = value;
     }
 
-    getRound() {
-        return this.round;
+    /**
+     * The rect height
+     * @type number
+     */
+    _height;
+    get height () {
+        return this._height;
+    }
+    set height (value) {
+        this._height = value;
     }
 
-    setWidth(width) {
-        this.width = width;
+    /**
+     * The array of the rounded corner value
+     * top-left, top-right, bottom-left, bottom-right
+     * @type [number]
+     */
+    _round;
+    get round () {
+        return this._round;
+    }
+    set round (value) {
+        this._round = value;
     }
 
-    setHeight(height) {
-        this.height = height;
+    constructor (id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle, width, height, round) {
+        super(id, x, y, background_color, background_transparent, border_color, border_transparency, border_size, state, layer, visible, opacity, angle);
+        this._width = width;
+        this._height = height;
+        this._round = round.lenght == 4 ? round : [round[0], round[0], round[0], round[0]]; // tl, tr, bl, br
     }
 
-    setRound(round) {
-        this.round = round;
-    }
-
-    draw(drawing) {
+    draw (drawing) {
+      drawing.push();
         super.draw(drawing);
-        drawing.rect(this.x, this.y, this.width, this.height, this.round[0], this.round[1], this.round[2], this.round[3]);
+        drawing.rect(this._x, this._y, this._width, this._height, this._round[0], this._round[1], this._round[2], this._round[3]);
+      drawing.pop();
     }
-    
-    isClicked(x, y) {
-		return (x >= this.x) && (x <= this.x + this.width) && (y >= this.y) && (y <= this.y + this.height);
+
+    isClicked (x, y, drawing) {
+        return (x >= this._x) && (x <= this._x + this._width) && (y >= this._y) && (y <= this._y + this._height);
     }
-    
-    toXml() {
-        var rectangle = document.createElement("object_rectangle");
-        rectangle.innerHTML = this.id;
-        rectangle.setAttribute("x", this.x);
-        rectangle.setAttribute("y",this.y);
-        rectangle.setAttribute("bgcolor", this.bgcolor); 
-        rectangle.setAttribute("bgtransparent", this.bgtransparent);
-        rectangle.setAttribute("bocolor", this.bocolor); 
-        rectangle.setAttribute("botransparent", this.botransparent);
-        rectangle.setAttribute("bosize", this.bosize);
-        rectangle.setAttribute("layer", this.layer);
-        rectangle.setAttribute("visible", this.visible);
-        rectangle.setAttribute("opacity", this.opacity);
-        // rectangle.setAttribute("angle", this.angle); 
-        rectangle.setAttribute("width", this.width);
-        rectangle.setAttribute("height", this.height);
-        rectangle.setAttribute("round", this.round);
+
+    toXml () {
+        let rectangle = document.createElement("object_rectangle");
+        rectangle.innerHTML = this._id;
+        rectangle.setAttribute("x", this._x);
+        rectangle.setAttribute("y", this._y);
+        rectangle.setAttribute("background_color", this._background_color);
+        rectangle.setAttribute("background_transparent", this._background_transparent);
+        rectangle.setAttribute("border_color", this._border_color);
+        rectangle.setAttribute("border_transparency", this._border_transparency);
+        rectangle.setAttribute("border_size", this._border_size);
+        rectangle.setAttribute("layer", this._layer);
+        rectangle.setAttribute("visible", this._visible);
+        rectangle.setAttribute("opacity", this._opacity);
+        // rectangle.setAttribute("angle", this._angle); 
+        rectangle.setAttribute("width", this._width);
+        rectangle.setAttribute("height", this._height);
+        rectangle.setAttribute("round", this._round);
         return rectangle;
     }
-    
-    clone() {
-        return new Text(this.id, this.x, this.y, this.bgcolor, this.bgtransparent, this.bocolor, this.botransparent, this.state, this.layer, this.visible, this.opacity, this.angle, this.width, this.height, this.round);
-    }
 
+    clone () {
+        return new Rectangle(this._id, this._x, this._y, this._background_color, this._background_transparent, this._border_color, this._border_transparency,  this._border_size, this._state, this._layer, this._visible, this._opacity, this._angle, this._width, this._height, this._round);
+    }
 }

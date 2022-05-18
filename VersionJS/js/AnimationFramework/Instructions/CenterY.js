@@ -1,15 +1,20 @@
 /**
  * This instruction center verticaly the object atached to it
  */
-
-class CenterY extends Instruction {
+import { Instruction } from "./Instruction.js";
+import { HEIGHT } from '../animation_controller.js';
+export class CenterY extends Instruction {
 
 	constructor(object) {
 		super(object);
 	}
 
 	execute() {
-		this.object.setY(HEIGHT-this.object.getHeight());
+		if (this.object instanceof Text) {
+			this.object.y = ((HEIGHT - this.object.real_height) / 2);
+		} else {
+			this.object.y = ((HEIGHT - this.object.height) / 2);
+		}
 	}
 
 }
