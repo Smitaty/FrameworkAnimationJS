@@ -10,7 +10,7 @@
 	</background>
 	
 	<objects>
-		<object_text text="test avec gros padding" round="10,20,30,40" font="Arial,18,bold" x="800" y="60" visible="true" padding="30,40,30,50" background_transparency="false">a_copier</object_text>
+		<object_text text="test avec gros padding" round="10,20,30,40" font="Arial,18,bold" x="1000" y="60" visible="true" padding="30,40,30,50" background_transparency="false">a_copier</object_text>
 		<object_copy idcopy="a_copier" text="copie du texte avec gros padding" y="150">jl_copy</object_copy>
 
 		<object_grid 
@@ -25,7 +25,7 @@
 			columns="8" 
 			row_height="100" 
 			column_width="40" 
-			x="350" 
+			x="650" 
 			y="150">LA GRILLE</object_grid>
 		<object_grid 
 			visible="false" 
@@ -112,14 +112,14 @@
 			background_transparency="false"
 			height="100" width="500"
 			scale_x="1" scale_y="1"
-			max_x ="15" max_y="0"
-			min_x ="-12" min_y="-5"
+			max_x ="10" max_y="3"
+			min_x ="-5" min_y="-5"
 			unit_x="X" unit_y="Y"
 			draw_point="true"
 			border_color="255,0,0"
 			background_color="255,0,0"
 			border_transparency="false"
-			function="-x*0.3"> width pos height pos
+			function="-x*0.1"> width pos height pos
 		</object_graph>
 
 		<object_graph 
@@ -173,7 +173,7 @@
 			background_transparency="false" 
 			background_color="210,180,222"
 			border_transparency="false"
-			border_color="30,30,30"
+			border_color="0,0,0"
 			values="   | C1 | C2 | C3 | C4 $
 					L1 | 10 | 20 | 30 $ 
 					L2 | 40 | 50 | 60 | 70 $ 
@@ -184,7 +184,7 @@
 			column_width="40"
 			has_header_columns="true"
 			has_header_rows="true"
-			header_background_color="255,0,233"
+			header_background_color="192,192,192"
 			header_color="255,0,0"
 			header_font="Courier,24,italic"
 			header_column_height="80"
@@ -207,10 +207,10 @@
 			rotation="-90">Arrow</object_arrow>
 
 		<object_landmark
-			x="400"
+			x="350"
 			y="400"
 			layer="6"
-			width="150"
+			width="250"
 			height="200"
 			visible="true"
 			background_transparency="false"
@@ -220,22 +220,22 @@
 			background_color="0,0,0"
 			max_x="50"
 			max_y="50"
-			min_x="-10"
-			min_y="-10"
+			min_x="-5"
+			min_y="-5"
 			scale_x="5"
 			scale_y="5"
-			unit_x="a"
-			unit_y="b">Landmark</object_landmark>
+			unit_x="cm"
+			unit_y="cm">Landmark</object_landmark>
 
 		<object_image
 			x="150"
-			y="300"
+			y="350"
 			image="img/yellow_blue_linear_gradient.png"
 			width="50"
 			height="50"
 			visible="true">Image</object_image>
 
-		<object_copy idcopy="Image" y="250" layer="8">object_copy</object_copy>
+		<object_copy idcopy="Image" y="300" layer="8">object_copy</object_copy>
 
 	</objects>
 
