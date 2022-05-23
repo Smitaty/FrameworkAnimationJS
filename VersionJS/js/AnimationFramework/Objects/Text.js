@@ -227,11 +227,9 @@ export class Text extends AnimatedObject {
 
 		// Compute real_width and real_height
 		this.computeRealDimension(drawing);
-
-		drawing.rect(this._x, this._y, this._real_width, this._real_height);
 		
 		// Background
-		drawing.rect(this._x, this._y, this._real_width, this._real_height, this.round[0], this.round[1], this.round[2], this.round[3]);
+		drawing.rect(this._x, this._y, this._real_width, this._real_height, this._round[0], this._round[1], this._round[2], this._round[3]);
 
 		// Padding
 		let x = this._x;
