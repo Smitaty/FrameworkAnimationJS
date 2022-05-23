@@ -186,7 +186,7 @@ export class SetProperty extends Instruction {
 				this.target.width_triangle = parseInt(this.value);
 				break;
 			case "height_triangle":
-				this.target.triangle = parseInt(this.value);
+				this.target.height_triangle = parseInt(this.value);
 				break;
 			case "rotation":
 				this.target.rotation = parseInt(this.value);
