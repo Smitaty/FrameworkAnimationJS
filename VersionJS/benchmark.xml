@@ -201,8 +201,8 @@
 			border_transparency="false"
 			border_color="255,0,0"
 			width_line="50"
-			height_line="5"
-			width_triangle="15"
+			height_line="25"
+			width_triangle="25"
 			height_triangle="15"
 			rotation="-90">Arrow</object_arrow>
 

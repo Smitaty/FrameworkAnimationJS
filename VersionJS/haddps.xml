@@ -1,3 +1,4 @@
+<!DOCTYPE animation SYSTEM "animation.dtd">
 <animation
 		xmlns="http://www.w3.org/1999/xhtml"
 		speed="very_fast">
@@ -14,12 +15,12 @@
 				x="50"
 				y="30"
 				background_color="244,208,63"
-				background_transparency="0"
+				background_transparency="false"
 				border_color="0,0,0"
-				border_transparency="0"
+				border_transparency="false"
 				border_size="1"
 				layer="0"
-				visible="1"
+				visible="true"
 				opacity="255"
 				font="Courier,14,normal"
 				color="0,0,0"
@@ -28,21 +29,22 @@
 				halignment="center"
 				valignment="center"
 				has_header_rows="true"
-				header_row_width="60"
+				header_row_width="80"
 				header_background_color="243,156,18"
 				header_color="0,0,0"
+				header_font="Courier,16,bold"
 				values="src 1 | a3 | a2 | a1 | a0">src1</object_table>
 
 		<object_table
 				x="50"
 				y="70"
 				background_color="244,208,63"
-				background_transparency="0"
+				background_transparency="false"
 				border_color="0,0,0"
-				border_transparency="0"
+				border_transparency="false"
 				border_size="1"
 				layer="0"
-				visible="1"
+				visible="true"
 				opacity="255"
 				font="Arial,15"
 				color="0,0,0"
@@ -51,21 +53,22 @@
 				halignment="center"
 				valignment="center"
 				has_header_rows="true"
-				header_row_width="60"
+				header_row_width="80"
 				header_background_color="243,156,18"
 				header_color="0,0,0"
+				header_font="Courier,16,bold"
 				values="src 2 | b3 | b2 | b1 | b0">src2</object_table>
 
 		<object_table
 				x="50"
 				y="110"
 				background_color="244,208,63"
-				background_transparency="0"
+				background_transparency="false"
 				border_color="0,0,0"
-				border_transparency="0"
+				border_transparency="false"
 				border_size="1"
 				layer="0"
-				visible="1"
+				visible="true"
 				opacity="255"
 				font="Arial,15"
 				color="0,0,0"
@@ -74,9 +77,10 @@
 				halignment="center"
 				valignment="center"
 				has_header_rows="true"
-				header_row_width="60"
+				header_row_width="80"
 				header_background_color="243,156,18"
 				header_color="0,0,0"
+				header_font="Courier,16,bold"
 				values="dest | b3 + b2 | b1 + b0 | a3 + a2 | a1 + a0">dest</object_table>
 
 		<object_text
