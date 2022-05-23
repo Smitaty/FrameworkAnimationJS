@@ -42,10 +42,10 @@ export class Arrow extends AnimatedObject {
     }
 
     get height_triangle() {
-        return this._width_triangle;
+        return this._height_triangle;
     }
     set height_triangle(value) {
-        this._width_triangle = value;
+        this._height_triangle = value;
     }
 
     get rotation() {
