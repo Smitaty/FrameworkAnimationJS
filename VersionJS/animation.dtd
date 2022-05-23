@@ -139,7 +139,7 @@
 <!ATTLIST object_landmark angle CDATA #IMPLIED >
 
 <!ELEMENT object_grid (#PCDATA) >
-<!ATTLIST object_grid lines CDATA #REQUIRED >
+<!ATTLIST object_grid rows CDATA #REQUIRED >
 <!ATTLIST object_grid columns CDATA #REQUIRED >
 <!ATTLIST object_grid row_height CDATA #REQUIRED >
 <!ATTLIST object_grid column_width CDATA #REQUIRED >
@@ -244,7 +244,7 @@
 <!ATTLIST object_copy scale_y CDATA #IMPLIED >
 <!ATTLIST object_copy unit_x CDATA #IMPLIED >
 <!ATTLIST object_copy unit_y CDATA #IMPLIED >
-<!ATTLIST object_copy lines CDATA #IMPLIED >
+<!ATTLIST object_copy rows CDATA #IMPLIED >
 <!ATTLIST object_copy columns CDATA #IMPLIED >
 <!ATTLIST object_copy row_height CDATA #IMPLIED >
 <!ATTLIST object_copy column_width CDATA #IMPLIED >
